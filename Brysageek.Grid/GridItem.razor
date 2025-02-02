@@ -1,0 +1,8 @@
+﻿<div style="@($"grid-column-start: {ColumnStart};" +
+              $"grid-column-end: span {ColumnSpan};" + 
+              $"grid-row-start: {RowStart};" +
+              $"grid-row-end: span {RowSpan};" +
+              $"justify-self: {@JustifySelf.ToAttributeValue()};" +
+              $"align-self: {@AlignSelf.ToAttributeValue()};")">
+    @ChildContent
+</div> 
