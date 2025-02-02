@@ -1,0 +1,26 @@
+﻿@page "/counter"
+
+<PageTitle>Counter</PageTitle>
+
+<Grid Columns="1fr"
+      Rows="1fr 4fr">
+    <GridItem ColumnStart="1"
+              RowStart="1">
+        <h1>Counter</h1>
+    </GridItem>
+    <GridItem ColumnStart="1"
+              RowStart="2">
+        <p>Current count: <FluentBadge Appearance="Appearance.Neutral">@currentCount</FluentBadge></p>
+        <FluentButton Appearance="Appearance.Accent" @onclick="IncrementCount">Click me</FluentButton>
+    </GridItem>
+</Grid>
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+
+}
