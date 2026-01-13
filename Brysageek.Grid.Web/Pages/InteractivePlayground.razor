@@ -22,7 +22,7 @@
                     <div>
                         <FluentLabel Typo="Typography.Body" Style="font-weight: bold; margin-bottom: 8px;">Columns</FluentLabel>
                         <FluentTextField @bind-Value="columnsValue" Style="width: 100%;" Placeholder="e.g., 1fr 1fr 1fr" />
-                        <FluentLabel Typo="Typography.Body" Style="font-size: 12px; color: gray; margin-top: 4px;">
+                        <FluentLabel Typo="Typography.Body" Style="font-size: 12px; color: var(--neutral-foreground-hint); margin-top: 4px;">
                             Define column widths (e.g., "1fr 2fr 1fr", "100px 1fr")
                         </FluentLabel>
                     </div>
@@ -30,7 +30,7 @@
                     <div>
                         <FluentLabel Typo="Typography.Body" Style="font-weight: bold; margin-bottom: 8px;">Rows</FluentLabel>
                         <FluentTextField @bind-Value="rowsValue" Style="width: 100%;" Placeholder="e.g., 100px 100px" />
-                        <FluentLabel Typo="Typography.Body" Style="font-size: 12px; color: gray; margin-top: 4px;">
+                        <FluentLabel Typo="Typography.Body" Style="font-size: 12px; color: var(--neutral-foreground-hint); margin-top: 4px;">
                             Define row heights (e.g., "auto 1fr", "100px 200px")
                         </FluentLabel>
                     </div>
@@ -137,7 +137,7 @@
             <FluentCard Style="padding: 20px;">
                 <FluentLabel Typo="Typography.H4" Style="margin-bottom: 20px;">Live Preview</FluentLabel>
                 
-                <div style="border: 2px dashed #ccc; padding: 20px; border-radius: 8px; background: #fafafa; min-height: 400px;">
+                <div style="border: 2px dashed #ccc; padding: 20px; border-radius: 8px; background: var(--neutral-layer-1); min-height: 400px;">
                     <Grid Columns="@columnsValue" 
                           Rows="@rowsValue" 
                           Width="@widthValue" 
@@ -175,7 +175,7 @@
                 <FluentLabel Typo="Typography.H5" Style="margin-bottom: 15px;">Generated Code</FluentLabel>
                 <FluentAccordion>
                     <FluentAccordionItem Heading="View Generated Code" Expanded="false">
-                        <pre style="background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto; font-size: 12px;"><code>@GenerateCode()</code></pre>
+                        <pre style="background: var(--neutral-layer-2); padding: 15px; border-radius: 4px; overflow-x: auto; font-size: 12px;"><code>@GenerateCode()</code></pre>
                         <FluentButton Appearance="Appearance.Accent" @onclick="CopyCodeToClipboard" Style="margin-top: 10px;">
                             Copy to Clipboard
                         </FluentButton>

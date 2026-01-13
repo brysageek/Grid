@@ -8,6 +8,35 @@ body {
     margin: 0;
 }
 
+/* Theme-aware example card backgrounds */
+.example-card-primary {
+    background: var(--accent-fill-rest);
+    color: var(--neutral-foreground-on-accent);
+}
+
+.example-card-secondary {
+    background: var(--neutral-fill-secondary-rest);
+    color: var(--neutral-foreground-rest);
+}
+
+.example-card-subtle {
+    background: var(--neutral-fill-subtle-rest);
+    color: var(--neutral-foreground-rest);
+}
+
+.example-code-block {
+    background: var(--neutral-layer-2);
+    color: var(--neutral-foreground-rest);
+    padding: 15px;
+    border-radius: 4px;
+    overflow-x: auto;
+}
+
+.example-highlight {
+    background: var(--neutral-fill-layer-alt-rest);
+    color: var(--neutral-foreground-rest);
+}
+
 .navmenu-icon {
     display: none;
 }
@@ -121,7 +150,7 @@ footer {
     }
 
 code {
-    color: #c02d76;
+    color: var(--accent-foreground-rest);
 }
 
 @media (max-width: 600px) {

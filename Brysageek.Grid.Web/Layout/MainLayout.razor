@@ -1,8 +1,19 @@
 ﻿@inherits LayoutComponentBase
+@inject ThemeService ThemeService
+@implements IDisposable
 
 <FluentLayout>
     <FluentHeader>
-        Brysageek.Grid.Web
+        <FluentStack Orientation="Orientation.Horizontal" HorizontalAlignment="HorizontalAlignment.Left" VerticalAlignment="VerticalAlignment.Center" Width="100%">
+            <FluentLabel Typo="Typography.H3" Style="margin: 0;">Brysageek.Grid</FluentLabel>
+            <FluentSpacer />
+            <FluentButton Appearance="Appearance.Lightweight" 
+                          IconStart="@(ThemeService.IsDarkMode ? new Icons.Regular.Size20.WeatherSunny() : new Icons.Regular.Size20.WeatherMoon())"
+                          OnClick="@ToggleTheme"
+                          Title="@(ThemeService.IsDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode")">
+                @(ThemeService.IsDarkMode ? "Light" : "Dark")
+            </FluentButton>
+        </FluentStack>
     </FluentHeader>
     <FluentStack Class="main" Orientation="Orientation.Horizontal" Width="100%">
         <NavMenu />
@@ -25,3 +36,20 @@
         <a href="https://learn.microsoft.com/en-us/aspnet/core/blazor" target="_blank">About Blazor</a>
     </FluentFooter>
 </FluentLayout>
+
+@code {
+    protected override void OnInitialized()
+    {
+        ThemeService.OnThemeChanged += StateHasChanged;
+    }
+
+    private void ToggleTheme()
+    {
+        ThemeService.ToggleTheme();
+    }
+
+    public void Dispose()
+    {
+        ThemeService.OnThemeChanged -= StateHasChanged;
+    }
+}
