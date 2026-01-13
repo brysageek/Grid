@@ -10,25 +10,49 @@
 
     <FluentDivider Style="margin: 30px 0;" />
 
-    <FluentLabel Typo="Typography.H2">Features</FluentLabel>
-    <FluentStack Orientation="Orientation.Vertical" Style="margin: 20px 0;">
-        <FluentCard>
-            <FluentLabel Typo="Typography.Body" Style="font-weight: bold;">✨ Flexible Grid System</FluentLabel>
-            <FluentLabel Typo="Typography.Body">Define custom columns and rows using CSS Grid syntax</FluentLabel>
-        </FluentCard>
-        <FluentCard>
-            <FluentLabel Typo="Typography.Body" Style="font-weight: bold;">🎯 Precise Item Placement</FluentLabel>
-            <FluentLabel Typo="Typography.Body">Control column/row start positions and spanning</FluentLabel>
-        </FluentCard>
-        <FluentCard>
-            <FluentLabel Typo="Typography.Body" Style="font-weight: bold;">📐 Alignment Control</FluentLabel>
-            <FluentLabel Typo="Typography.Body">Fine-tune item alignment with JustifySelf and AlignSelf properties</FluentLabel>
-        </FluentCard>
-        <FluentCard>
-            <FluentLabel Typo="Typography.Body" Style="font-weight: bold;">📱 Responsive Design</FluentLabel>
-            <FluentLabel Typo="Typography.Body">Create adaptive layouts that work on any screen size</FluentLabel>
-        </FluentCard>
-    </FluentStack>
+    <FluentLabel Typo="Typography.H2" Style="margin-bottom: 20px;">Features</FluentLabel>
+    <Grid Columns="1fr 1fr" Rows="auto auto" Gap="20px" Style="margin: 20px 0;">
+        <GridItem ColumnStart="1" RowStart="1">
+            <FluentCard Style="padding: 20px; height: 100%;">
+                <FluentStack Orientation="Orientation.Vertical" Style="gap: 10px;">
+                    <FluentLabel Typo="Typography.H4">✨ Flexible Grid System</FluentLabel>
+                    <FluentLabel Typo="Typography.Body">
+                        Define custom columns and rows using CSS Grid syntax with full control over sizing and spacing
+                    </FluentLabel>
+                </FluentStack>
+            </FluentCard>
+        </GridItem>
+        <GridItem ColumnStart="2" RowStart="1">
+            <FluentCard Style="padding: 20px; height: 100%;">
+                <FluentStack Orientation="Orientation.Vertical" Style="gap: 10px;">
+                    <FluentLabel Typo="Typography.H4">🎯 Precise Item Placement</FluentLabel>
+                    <FluentLabel Typo="Typography.Body">
+                        Control column/row start positions and spanning with intuitive properties
+                    </FluentLabel>
+                </FluentStack>
+            </FluentCard>
+        </GridItem>
+        <GridItem ColumnStart="1" RowStart="2">
+            <FluentCard Style="padding: 20px; height: 100%;">
+                <FluentStack Orientation="Orientation.Vertical" Style="gap: 10px;">
+                    <FluentLabel Typo="Typography.H4">📐 Alignment Control</FluentLabel>
+                    <FluentLabel Typo="Typography.Body">
+                        Fine-tune item alignment with JustifySelf and AlignSelf properties for pixel-perfect layouts
+                    </FluentLabel>
+                </FluentStack>
+            </FluentCard>
+        </GridItem>
+        <GridItem ColumnStart="2" RowStart="2">
+            <FluentCard Style="padding: 20px; height: 100%;">
+                <FluentStack Orientation="Orientation.Vertical" Style="gap: 10px;">
+                    <FluentLabel Typo="Typography.H4">📱 Responsive Design</FluentLabel>
+                    <FluentLabel Typo="Typography.Body">
+                        Create adaptive layouts that work beautifully on any screen size or device
+                    </FluentLabel>
+                </FluentStack>
+            </FluentCard>
+        </GridItem>
+    </Grid>
 
     <FluentDivider Style="margin: 30px 0;" />
 
