@@ -9,6 +9,7 @@ namespace Brysageek.Grid
         [Parameter] public string Rows { get; set; } = "1fr";
         [Parameter] public string Width { get; set; } = "100%";
         [Parameter] public string Height { get; set; } = "100%";
-        [Parameter] public string Gap { get; set; } = "5px 5px";    
+        [Parameter] public string Gap { get; set; } = "5px 5px"; 
+        [Parameter] public string? Style { get; set; }
     }
 }
