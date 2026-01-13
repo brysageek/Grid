@@ -4,9 +4,15 @@
     <nav class="sitenav" aria-labelledby="main-menu">
         <FluentNavMenu Id="main-menu" Width="200" Collapsible="true" Title="Navigation menu" @bind-Expanded="expanded" CustomToggle="true">
              <FluentNavLink Href="/" Match="NavLinkMatch.All" Icon="@(new Icons.Regular.Size20.Home())" IconColor="Color.Accent">Home</FluentNavLink>
-             <FluentNavLink Href="counter" Icon="@(new Icons.Regular.Size20.NumberSymbolSquare())" IconColor="Color.Accent">Counter</FluentNavLink>
-             <FluentNavLink Href="weather" Icon="@(new Icons.Regular.Size20.WeatherPartlyCloudyDay())" IconColor="Color.Accent">Weather</FluentNavLink>
-             <FluentNavLink Href="dashboard" Icon="@(new Icons.Regular.Size20.Grid())" IconColor="Color.Accent">Dashboard</FluentNavLink>
+             
+             <FluentNavGroup Title="Examples" Icon="@(new Icons.Regular.Size20.BookOpen())" Expanded="true">
+                 <FluentNavLink Href="basic-layouts" Icon="@(new Icons.Regular.Size20.TableSimple())" IconColor="Color.Accent">Basic Layouts</FluentNavLink>
+                 <FluentNavLink Href="spanning-examples" Icon="@(new Icons.Regular.Size20.Table())" IconColor="Color.Accent">Spanning</FluentNavLink>
+                 <FluentNavLink Href="alignment-examples" Icon="@(new Icons.Regular.Size20.AlignLeft())" IconColor="Color.Accent">Alignment</FluentNavLink>
+                 <FluentNavLink Href="responsive-examples" Icon="@(new Icons.Regular.Size20.PhoneDesktop())" IconColor="Color.Accent">Responsive</FluentNavLink>
+                 <FluentNavLink Href="interactive-playground" Icon="@(new Icons.Regular.Size20.Edit())" IconColor="Color.Accent">Playground</FluentNavLink>
+                 <FluentNavLink Href="dashboard" Icon="@(new Icons.Regular.Size20.GridDots())" IconColor="Color.Accent">Dashboard</FluentNavLink>
+             </FluentNavGroup>
         </FluentNavMenu>
     </nav>
 </div>

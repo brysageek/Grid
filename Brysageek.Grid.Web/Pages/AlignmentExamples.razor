@@ -1,0 +1,303 @@
+@page "/alignment-examples"
+@using Brysageek.Grid.Placement
+
+<PageTitle>Alignment Examples</PageTitle>
+
+<div style="padding: 20px;">
+    <FluentLabel Typo="Typography.H1">Alignment Control</FluentLabel>
+    <FluentLabel Typo="Typography.Body" Style="margin-bottom: 30px;">
+        Control how grid items are positioned within their grid cells using JustifySelf and AlignSelf properties.
+    </FluentLabel>
+
+    <FluentDivider Style="margin: 30px 0;" />
+
+    <!-- Explanation Section -->
+    <FluentCard Style="margin-bottom: 30px; padding: 20px; background: #FFF4CE;">
+        <FluentLabel Typo="Typography.H4">Understanding Alignment Properties</FluentLabel>
+        <FluentStack Orientation="Orientation.Vertical" Style="margin-top: 15px;">
+            <FluentLabel Typo="Typography.Body">
+                <strong>JustifySelf:</strong> Controls horizontal alignment (left-to-right positioning)
+            </FluentLabel>
+            <FluentLabel Typo="Typography.Body">
+                <strong>AlignSelf:</strong> Controls vertical alignment (top-to-bottom positioning)
+            </FluentLabel>
+            <FluentLabel Typo="Typography.Body" Style="margin-top: 10px;">
+                <strong>Available values:</strong> Auto, Start, End, Center, Stretch
+            </FluentLabel>
+        </FluentStack>
+    </FluentCard>
+
+    <!-- Example 1: JustifySelf Values -->
+    <FluentLabel Typo="Typography.H2">1. JustifySelf (Horizontal Alignment)</FluentLabel>
+    <FluentLabel Typo="Typography.Body" Style="margin-bottom: 15px;">
+        Control the horizontal positioning of items within their grid cells.
+    </FluentLabel>
+    
+    <FluentCard Style="margin-bottom: 30px; padding: 20px;">
+        <Grid Columns="1fr 1fr 1fr" Rows="120px 120px" Gap="10px">
+            <GridItem ColumnStart="1" RowStart="1" JustifySelf="JustifySelf.Start">
+                <FluentCard Style="background: #0078D4; padding: 20px; width: 100px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body" Style="color: white; font-size: 12px; text-align: center;">
+                        Start
+                    </FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="2" RowStart="1" JustifySelf="JustifySelf.Center">
+                <FluentCard Style="background: #0078D4; padding: 20px; width: 100px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body" Style="color: white; font-size: 12px; text-align: center;">
+                        Center
+                    </FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="3" RowStart="1" JustifySelf="JustifySelf.End">
+                <FluentCard Style="background: #0078D4; padding: 20px; width: 100px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body" Style="color: white; font-size: 12px; text-align: center;">
+                        End
+                    </FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="1" ColumnSpan="3" RowStart="2" JustifySelf="JustifySelf.Stretch">
+                <FluentCard Style="background: #50E6FF; height: 80px; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body" Style="font-size: 12px;">
+                        Stretch (fills entire width)
+                    </FluentLabel>
+                </FluentCard>
+            </GridItem>
+        </Grid>
+        
+        <FluentAccordion Style="margin-top: 15px;">
+            <FluentAccordionItem Heading="View Code">
+                <pre style="background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto;"><code>&lt;Grid Columns="1fr 1fr 1fr" Rows="120px 120px" Gap="10px"&gt;
+    &lt;GridItem ColumnStart="1" RowStart="1" JustifySelf="JustifySelf.Start"&gt;
+        Start
+    &lt;/GridItem&gt;
+    &lt;GridItem ColumnStart="2" RowStart="1" JustifySelf="JustifySelf.Center"&gt;
+        Center
+    &lt;/GridItem&gt;
+    &lt;GridItem ColumnStart="3" RowStart="1" JustifySelf="JustifySelf.End"&gt;
+        End
+    &lt;/GridItem&gt;
+    &lt;GridItem ColumnStart="1" ColumnSpan="3" RowStart="2" JustifySelf="JustifySelf.Stretch"&gt;
+        Stretch
+    &lt;/GridItem&gt;
+&lt;/Grid&gt;</code></pre>
+            </FluentAccordionItem>
+        </FluentAccordion>
+    </FluentCard>
+
+    <!-- Example 2: AlignSelf Values -->
+    <FluentLabel Typo="Typography.H2">2. AlignSelf (Vertical Alignment)</FluentLabel>
+    <FluentLabel Typo="Typography.Body" Style="margin-bottom: 15px;">
+        Control the vertical positioning of items within their grid cells.
+    </FluentLabel>
+    
+    <FluentCard Style="margin-bottom: 30px; padding: 20px;">
+        <Grid Columns="1fr 1fr 1fr 1fr" Rows="200px" Gap="10px">
+            <GridItem ColumnStart="1" RowStart="1" AlignSelf="AlignSelf.Start">
+                <FluentCard Style="background: #0078D4; padding: 15px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body" Style="color: white; font-size: 12px; text-align: center;">
+                        Start
+                    </FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="2" RowStart="1" AlignSelf="AlignSelf.Center">
+                <FluentCard Style="background: #0078D4; padding: 15px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body" Style="color: white; font-size: 12px; text-align: center;">
+                        Center
+                    </FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="3" RowStart="1" AlignSelf="AlignSelf.End">
+                <FluentCard Style="background: #0078D4; padding: 15px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body" Style="color: white; font-size: 12px; text-align: center;">
+                        End
+                    </FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="4" RowStart="1" AlignSelf="AlignSelf.Stretch">
+                <FluentCard Style="background: #50E6FF; display: flex; align-items: center; justify-content: center; height: 100%;">
+                    <FluentLabel Typo="Typography.Body" Style="font-size: 12px; text-align: center;">
+                        Stretch<br/>(fills height)
+                    </FluentLabel>
+                </FluentCard>
+            </GridItem>
+        </Grid>
+        
+        <FluentAccordion Style="margin-top: 15px;">
+            <FluentAccordionItem Heading="View Code">
+                <pre style="background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto;"><code>&lt;Grid Columns="1fr 1fr 1fr 1fr" Rows="200px" Gap="10px"&gt;
+    &lt;GridItem ColumnStart="1" RowStart="1" AlignSelf="AlignSelf.Start"&gt;
+        Start
+    &lt;/GridItem&gt;
+    &lt;GridItem ColumnStart="2" RowStart="1" AlignSelf="AlignSelf.Center"&gt;
+        Center
+    &lt;/GridItem&gt;
+    &lt;GridItem ColumnStart="3" RowStart="1" AlignSelf="AlignSelf.End"&gt;
+        End
+    &lt;/GridItem&gt;
+    &lt;GridItem ColumnStart="4" RowStart="1" AlignSelf="AlignSelf.Stretch"&gt;
+        Stretch
+    &lt;/GridItem&gt;
+&lt;/Grid&gt;</code></pre>
+            </FluentAccordionItem>
+        </FluentAccordion>
+    </FluentCard>
+
+    <!-- Example 3: Combining JustifySelf and AlignSelf -->
+    <FluentLabel Typo="Typography.H2">3. Combining Both Properties</FluentLabel>
+    <FluentLabel Typo="Typography.Body" Style="margin-bottom: 15px;">
+        Use both JustifySelf and AlignSelf together for precise positioning.
+    </FluentLabel>
+    
+    <FluentCard Style="margin-bottom: 30px; padding: 20px;">
+        <Grid Columns="1fr 1fr 1fr" Rows="150px 150px 150px" Gap="10px">
+            <GridItem ColumnStart="1" RowStart="1" JustifySelf="JustifySelf.Start" AlignSelf="AlignSelf.Start">
+                <FluentCard Style="background: #667eea; padding: 15px; width: 80px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body" Style="color: white; font-size: 11px; text-align: center;">
+                        Top Left
+                    </FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="2" RowStart="1" JustifySelf="JustifySelf.Center" AlignSelf="AlignSelf.Start">
+                <FluentCard Style="background: #764ba2; padding: 15px; width: 80px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body" Style="color: white; font-size: 11px; text-align: center;">
+                        Top Center
+                    </FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="3" RowStart="1" JustifySelf="JustifySelf.End" AlignSelf="AlignSelf.Start">
+                <FluentCard Style="background: #f093fb; padding: 15px; width: 80px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body" Style="font-size: 11px; text-align: center;">
+                        Top Right
+                    </FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="1" RowStart="2" JustifySelf="JustifySelf.Start" AlignSelf="AlignSelf.Center">
+                <FluentCard Style="background: #4facfe; padding: 15px; width: 80px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body" Style="color: white; font-size: 11px; text-align: center;">
+                        Center Left
+                    </FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="2" RowStart="2" JustifySelf="JustifySelf.Center" AlignSelf="AlignSelf.Center">
+                <FluentCard Style="background: #0078D4; padding: 15px; width: 80px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body" Style="color: white; font-size: 11px; text-align: center;">
+                        Center
+                    </FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="3" RowStart="2" JustifySelf="JustifySelf.End" AlignSelf="AlignSelf.Center">
+                <FluentCard Style="background: #43e97b; padding: 15px; width: 80px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body" Style="font-size: 11px; text-align: center;">
+                        Center Right
+                    </FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="1" RowStart="3" JustifySelf="JustifySelf.Start" AlignSelf="AlignSelf.End">
+                <FluentCard Style="background: #fa709a; padding: 15px; width: 80px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body" Style="color: white; font-size: 11px; text-align: center;">
+                        Bottom Left
+                    </FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="2" RowStart="3" JustifySelf="JustifySelf.Center" AlignSelf="AlignSelf.End">
+                <FluentCard Style="background: #fee140; padding: 15px; width: 80px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body" Style="font-size: 11px; text-align: center;">
+                        Bottom Center
+                    </FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="3" RowStart="3" JustifySelf="JustifySelf.End" AlignSelf="AlignSelf.End">
+                <FluentCard Style="background: #30cfd0; padding: 15px; width: 80px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body" Style="font-size: 11px; text-align: center;">
+                        Bottom Right
+                    </FluentLabel>
+                </FluentCard>
+            </GridItem>
+        </Grid>
+        
+        <FluentAccordion Style="margin-top: 15px;">
+            <FluentAccordionItem Heading="View Code">
+                <pre style="background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto;"><code>&lt;Grid Columns="1fr 1fr 1fr" Rows="150px 150px 150px" Gap="10px"&gt;
+    &lt;GridItem ColumnStart="1" RowStart="1" 
+              JustifySelf="JustifySelf.Start" 
+              AlignSelf="AlignSelf.Start"&gt;
+        Top Left
+    &lt;/GridItem&gt;
+    &lt;GridItem ColumnStart="2" RowStart="2" 
+              JustifySelf="JustifySelf.Center" 
+              AlignSelf="AlignSelf.Center"&gt;
+        Center
+    &lt;/GridItem&gt;
+    &lt;!-- Additional items... --&gt;
+&lt;/Grid&gt;</code></pre>
+            </FluentAccordionItem>
+        </FluentAccordion>
+    </FluentCard>
+
+    <!-- Example 4: Practical Card Layout -->
+    <FluentLabel Typo="Typography.H2">4. Practical Card Layout</FluentLabel>
+    <FluentLabel Typo="Typography.Body" Style="margin-bottom: 15px;">
+        A practical example showing cards with different alignments.
+    </FluentLabel>
+    
+    <FluentCard Style="margin-bottom: 30px; padding: 20px;">
+        <Grid Columns="1fr 1fr 1fr" Rows="200px" Gap="15px">
+            <GridItem ColumnStart="1" RowStart="1" JustifySelf="JustifySelf.Stretch" AlignSelf="AlignSelf.Start">
+                <FluentCard Style="padding: 20px; height: auto;">
+                    <FluentLabel Typo="Typography.H5">Short Content</FluentLabel>
+                    <FluentLabel Typo="Typography.Body" Style="margin-top: 10px;">
+                        This card is aligned to the top.
+                    </FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="2" RowStart="1" JustifySelf="JustifySelf.Stretch" AlignSelf="AlignSelf.Center">
+                <FluentCard Style="padding: 20px; height: auto;">
+                    <FluentLabel Typo="Typography.H5">Medium Content</FluentLabel>
+                    <FluentLabel Typo="Typography.Body" Style="margin-top: 10px;">
+                        This card is vertically centered in its grid cell.
+                    </FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="3" RowStart="1" JustifySelf="JustifySelf.Stretch" AlignSelf="AlignSelf.Stretch">
+                <FluentCard Style="padding: 20px; height: 100%; display: flex; flex-direction: column;">
+                    <FluentLabel Typo="Typography.H5">Full Height</FluentLabel>
+                    <FluentLabel Typo="Typography.Body" Style="margin-top: 10px; flex-grow: 1;">
+                        This card stretches to fill the entire cell height.
+                    </FluentLabel>
+                    <FluentButton Appearance="Appearance.Accent" Style="margin-top: auto;">Action</FluentButton>
+                </FluentCard>
+            </GridItem>
+        </Grid>
+        
+        <FluentAccordion Style="margin-top: 15px;">
+            <FluentAccordionItem Heading="View Code">
+                <pre style="background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto;"><code>&lt;Grid Columns="1fr 1fr 1fr" Rows="200px" Gap="15px"&gt;
+    &lt;GridItem ColumnStart="1" RowStart="1" 
+              JustifySelf="JustifySelf.Stretch" 
+              AlignSelf="AlignSelf.Start"&gt;
+        &lt;!-- Card aligned to top --&gt;
+    &lt;/GridItem&gt;
+    &lt;GridItem ColumnStart="2" RowStart="1" 
+              JustifySelf="JustifySelf.Stretch" 
+              AlignSelf="AlignSelf.Center"&gt;
+        &lt;!-- Card vertically centered --&gt;
+    &lt;/GridItem&gt;
+    &lt;GridItem ColumnStart="3" RowStart="1" 
+              JustifySelf="JustifySelf.Stretch" 
+              AlignSelf="AlignSelf.Stretch"&gt;
+        &lt;!-- Card fills entire height --&gt;
+    &lt;/GridItem&gt;
+&lt;/Grid&gt;</code></pre>
+            </FluentAccordionItem>
+        </FluentAccordion>
+    </FluentCard>
+
+    <FluentDivider Style="margin: 30px 0;" />
+
+    <FluentMessageBar Intent="MessageIntent.Success">
+        <FluentLabel Typo="Typography.Body">
+            ?? <strong>Pro Tip:</strong> Use <code>Stretch</code> when you want items to fill their grid cells completely. Use <code>Start</code>, <code>Center</code>, or <code>End</code> for precise positioning within cells!
+        </FluentLabel>
+    </FluentMessageBar>
+</div>

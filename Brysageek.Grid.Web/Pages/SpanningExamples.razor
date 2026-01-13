@@ -1,0 +1,297 @@
+@page "/spanning-examples"
+
+<PageTitle>Spanning Examples</PageTitle>
+
+<div style="padding: 20px;">
+    <FluentLabel Typo="Typography.H1">Column and Row Spanning</FluentLabel>
+    <FluentLabel Typo="Typography.Body" Style="margin-bottom: 30px;">
+        Learn how to make grid items span across multiple columns and rows to create complex layouts.
+    </FluentLabel>
+
+    <FluentDivider Style="margin: 30px 0;" />
+
+    <!-- Example 1: Column Spanning -->
+    <FluentLabel Typo="Typography.H2">1. Column Spanning</FluentLabel>
+    <FluentLabel Typo="Typography.Body" Style="margin-bottom: 15px;">
+        Make an item span across multiple columns using the ColumnSpan property.
+    </FluentLabel>
+    
+    <FluentCard Style="margin-bottom: 30px; padding: 20px;">
+        <Grid Columns="1fr 1fr 1fr" Rows="80px 80px" Gap="10px">
+            <GridItem ColumnStart="1" ColumnSpan="3" RowStart="1">
+                <FluentCard Style="background: #0078D4; height: 100%; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body" Style="color: white; font-weight: bold;">Spans 3 Columns</FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="1" RowStart="2">
+                <FluentCard Style="background: #50E6FF; height: 100%; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body">Col 1</FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="2" RowStart="2">
+                <FluentCard Style="background: #50E6FF; height: 100%; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body">Col 2</FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="3" RowStart="2">
+                <FluentCard Style="background: #50E6FF; height: 100%; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body">Col 3</FluentLabel>
+                </FluentCard>
+            </GridItem>
+        </Grid>
+        
+        <FluentAccordion Style="margin-top: 15px;">
+            <FluentAccordionItem Heading="View Code">
+                <pre style="background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto;"><code>&lt;Grid Columns="1fr 1fr 1fr" Rows="80px 80px" Gap="10px"&gt;
+    &lt;GridItem ColumnStart="1" ColumnSpan="3" RowStart="1"&gt;
+        Spans 3 Columns
+    &lt;/GridItem&gt;
+    &lt;GridItem ColumnStart="1" RowStart="2"&gt;Col 1&lt;/GridItem&gt;
+    &lt;GridItem ColumnStart="2" RowStart="2"&gt;Col 2&lt;/GridItem&gt;
+    &lt;GridItem ColumnStart="3" RowStart="2"&gt;Col 3&lt;/GridItem&gt;
+&lt;/Grid&gt;</code></pre>
+            </FluentAccordionItem>
+        </FluentAccordion>
+    </FluentCard>
+
+    <!-- Example 2: Row Spanning -->
+    <FluentLabel Typo="Typography.H2">2. Row Spanning</FluentLabel>
+    <FluentLabel Typo="Typography.Body" Style="margin-bottom: 15px;">
+        Make an item span across multiple rows using the RowSpan property.
+    </FluentLabel>
+    
+    <FluentCard Style="margin-bottom: 30px; padding: 20px;">
+        <Grid Columns="1fr 1fr" Rows="80px 80px 80px" Gap="10px">
+            <GridItem ColumnStart="1" RowStart="1" RowSpan="3">
+                <FluentCard Style="background: #0078D4; height: 100%; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body" Style="color: white; font-weight: bold;">Spans 3 Rows</FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="2" RowStart="1">
+                <FluentCard Style="background: #50E6FF; height: 100%; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body">Row 1</FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="2" RowStart="2">
+                <FluentCard Style="background: #50E6FF; height: 100%; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body">Row 2</FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="2" RowStart="3">
+                <FluentCard Style="background: #50E6FF; height: 100%; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body">Row 3</FluentLabel>
+                </FluentCard>
+            </GridItem>
+        </Grid>
+        
+        <FluentAccordion Style="margin-top: 15px;">
+            <FluentAccordionItem Heading="View Code">
+                <pre style="background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto;"><code>&lt;Grid Columns="1fr 1fr" Rows="80px 80px 80px" Gap="10px"&gt;
+    &lt;GridItem ColumnStart="1" RowStart="1" RowSpan="3"&gt;
+        Spans 3 Rows
+    &lt;/GridItem&gt;
+    &lt;GridItem ColumnStart="2" RowStart="1"&gt;Row 1&lt;/GridItem&gt;
+    &lt;GridItem ColumnStart="2" RowStart="2"&gt;Row 2&lt;/GridItem&gt;
+    &lt;GridItem ColumnStart="2" RowStart="3"&gt;Row 3&lt;/GridItem&gt;
+&lt;/Grid&gt;</code></pre>
+            </FluentAccordionItem>
+        </FluentAccordion>
+    </FluentCard>
+
+    <!-- Example 3: Both Column and Row Spanning -->
+    <FluentLabel Typo="Typography.H2">3. Column and Row Spanning Combined</FluentLabel>
+    <FluentLabel Typo="Typography.Body" Style="margin-bottom: 15px;">
+        Items can span both columns and rows simultaneously.
+    </FluentLabel>
+    
+    <FluentCard Style="margin-bottom: 30px; padding: 20px;">
+        <Grid Columns="1fr 1fr 1fr" Rows="80px 80px 80px" Gap="10px">
+            <GridItem ColumnStart="1" ColumnSpan="2" RowStart="1" RowSpan="2">
+                <FluentCard Style="background: #0078D4; height: 100%; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body" Style="color: white; font-weight: bold;">
+                        Spans 2 Columns<br/>& 2 Rows
+                    </FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="3" RowStart="1">
+                <FluentCard Style="background: #50E6FF; height: 100%; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body">3,1</FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="3" RowStart="2">
+                <FluentCard Style="background: #50E6FF; height: 100%; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body">3,2</FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="1" RowStart="3">
+                <FluentCard Style="background: #50E6FF; height: 100%; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body">1,3</FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="2" RowStart="3">
+                <FluentCard Style="background: #50E6FF; height: 100%; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body">2,3</FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="3" RowStart="3">
+                <FluentCard Style="background: #50E6FF; height: 100%; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body">3,3</FluentLabel>
+                </FluentCard>
+            </GridItem>
+        </Grid>
+        
+        <FluentAccordion Style="margin-top: 15px;">
+            <FluentAccordionItem Heading="View Code">
+                <pre style="background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto;"><code>&lt;Grid Columns="1fr 1fr 1fr" Rows="80px 80px 80px" Gap="10px"&gt;
+    &lt;GridItem ColumnStart="1" ColumnSpan="2" RowStart="1" RowSpan="2"&gt;
+        Spans 2 Columns & 2 Rows
+    &lt;/GridItem&gt;
+    &lt;GridItem ColumnStart="3" RowStart="1"&gt;3,1&lt;/GridItem&gt;
+    &lt;GridItem ColumnStart="3" RowStart="2"&gt;3,2&lt;/GridItem&gt;
+    &lt;!-- Additional items... --&gt;
+&lt;/Grid&gt;</code></pre>
+            </FluentAccordionItem>
+        </FluentAccordion>
+    </FluentCard>
+
+    <!-- Example 4: Magazine Layout -->
+    <FluentLabel Typo="Typography.H2">4. Magazine-Style Layout</FluentLabel>
+    <FluentLabel Typo="Typography.Body" Style="margin-bottom: 15px;">
+        A practical example showing a magazine-style layout with varying item sizes.
+    </FluentLabel>
+    
+    <FluentCard Style="margin-bottom: 30px; padding: 20px;">
+        <Grid Columns="1fr 1fr 1fr 1fr" Rows="150px 150px 150px" Gap="15px">
+            <GridItem ColumnStart="1" ColumnSpan="2" RowStart="1" RowSpan="2">
+                <FluentCard Style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 100%; padding: 20px; color: white;">
+                    <FluentLabel Typo="Typography.H3" Style="color: white;">Featured Article</FluentLabel>
+                    <FluentLabel Typo="Typography.Body" Style="color: white; margin-top: 10px;">
+                        This is the main featured content that spans multiple columns and rows.
+                    </FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="3" RowStart="1">
+                <FluentCard Style="background: #f093fb; height: 100%; padding: 15px;">
+                    <FluentLabel Typo="Typography.Body" Style="font-weight: bold;">Article 2</FluentLabel>
+                    <FluentLabel Typo="Typography.Body" Style="margin-top: 8px; font-size: 14px;">
+                        Short description...
+                    </FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="4" RowStart="1">
+                <FluentCard Style="background: #4facfe; height: 100%; padding: 15px;">
+                    <FluentLabel Typo="Typography.Body" Style="font-weight: bold;">Article 3</FluentLabel>
+                    <FluentLabel Typo="Typography.Body" Style="margin-top: 8px; font-size: 14px;">
+                        Short description...
+                    </FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="3" ColumnSpan="2" RowStart="2">
+                <FluentCard Style="background: #43e97b; height: 100%; padding: 15px;">
+                    <FluentLabel Typo="Typography.Body" Style="font-weight: bold;">Wide Article</FluentLabel>
+                    <FluentLabel Typo="Typography.Body" Style="margin-top: 8px;">
+                        This article spans two columns horizontally.
+                    </FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="1" RowStart="3">
+                <FluentCard Style="background: #fa709a; height: 100%; padding: 15px;">
+                    <FluentLabel Typo="Typography.Body" Style="font-weight: bold;">Article 5</FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="2" RowStart="3">
+                <FluentCard Style="background: #fee140; height: 100%; padding: 15px;">
+                    <FluentLabel Typo="Typography.Body" Style="font-weight: bold;">Article 6</FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="3" RowStart="3">
+                <FluentCard Style="background: #30cfd0; height: 100%; padding: 15px;">
+                    <FluentLabel Typo="Typography.Body" Style="font-weight: bold;">Article 7</FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="4" RowStart="3">
+                <FluentCard Style="background: #a8edea; height: 100%; padding: 15px;">
+                    <FluentLabel Typo="Typography.Body" Style="font-weight: bold;">Article 8</FluentLabel>
+                </FluentCard>
+            </GridItem>
+        </Grid>
+        
+        <FluentAccordion Style="margin-top: 15px;">
+            <FluentAccordionItem Heading="View Code">
+                <pre style="background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto;"><code>&lt;Grid Columns="1fr 1fr 1fr 1fr" Rows="150px 150px 150px" Gap="15px"&gt;
+    &lt;GridItem ColumnStart="1" ColumnSpan="2" RowStart="1" RowSpan="2"&gt;
+        Featured Article
+    &lt;/GridItem&gt;
+    &lt;GridItem ColumnStart="3" RowStart="1"&gt;Article 2&lt;/GridItem&gt;
+    &lt;GridItem ColumnStart="4" RowStart="1"&gt;Article 3&lt;/GridItem&gt;
+    &lt;GridItem ColumnStart="3" ColumnSpan="2" RowStart="2"&gt;
+        Wide Article
+    &lt;/GridItem&gt;
+    &lt;!-- Additional articles... --&gt;
+&lt;/Grid&gt;</code></pre>
+            </FluentAccordionItem>
+        </FluentAccordion>
+    </FluentCard>
+
+    <!-- Example 5: Asymmetric Layout -->
+    <FluentLabel Typo="Typography.H2">5. Asymmetric Layout</FluentLabel>
+    <FluentLabel Typo="Typography.Body" Style="margin-bottom: 15px;">
+        Create interesting asymmetric layouts by varying span values.
+    </FluentLabel>
+    
+    <FluentCard Style="margin-bottom: 30px; padding: 20px;">
+        <Grid Columns="1fr 1fr 1fr 1fr" Rows="100px 100px 100px 100px" Gap="10px">
+            <GridItem ColumnStart="1" ColumnSpan="3" RowStart="1">
+                <FluentCard Style="background: #667eea; height: 100%; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body" Style="color: white;">Span 3 columns</FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="4" RowStart="1" RowSpan="2">
+                <FluentCard Style="background: #764ba2; height: 100%; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body" Style="color: white;">Span 2 rows</FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="1" RowStart="2" RowSpan="2">
+                <FluentCard Style="background: #f093fb; height: 100%; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body">Span 2 rows</FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="2" ColumnSpan="2" RowStart="2" RowSpan="2">
+                <FluentCard Style="background: #4facfe; height: 100%; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body" Style="color: white;">Span 2x2</FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="4" RowStart="3">
+                <FluentCard Style="background: #43e97b; height: 100%; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body">1x1</FluentLabel>
+                </FluentCard>
+            </GridItem>
+            <GridItem ColumnStart="1" ColumnSpan="4" RowStart="4">
+                <FluentCard Style="background: #fa709a; height: 100%; display: flex; align-items: center; justify-content: center;">
+                    <FluentLabel Typo="Typography.Body" Style="color: white;">Span 4 columns (full width)</FluentLabel>
+                </FluentCard>
+            </GridItem>
+        </Grid>
+        
+        <FluentAccordion Style="margin-top: 15px;">
+            <FluentAccordionItem Heading="View Code">
+                <pre style="background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto;"><code>&lt;Grid Columns="1fr 1fr 1fr 1fr" Rows="100px 100px 100px 100px" Gap="10px"&gt;
+    &lt;GridItem ColumnStart="1" ColumnSpan="3" RowStart="1"&gt;...&lt;/GridItem&gt;
+    &lt;GridItem ColumnStart="4" RowStart="1" RowSpan="2"&gt;...&lt;/GridItem&gt;
+    &lt;GridItem ColumnStart="1" RowStart="2" RowSpan="2"&gt;...&lt;/GridItem&gt;
+    &lt;GridItem ColumnStart="2" ColumnSpan="2" RowStart="2" RowSpan="2"&gt;...&lt;/GridItem&gt;
+    &lt;GridItem ColumnStart="4" RowStart="3"&gt;...&lt;/GridItem&gt;
+    &lt;GridItem ColumnStart="1" ColumnSpan="4" RowStart="4"&gt;...&lt;/GridItem&gt;
+&lt;/Grid&gt;</code></pre>
+            </FluentAccordionItem>
+        </FluentAccordion>
+    </FluentCard>
+
+    <FluentDivider Style="margin: 30px 0;" />
+
+    <FluentMessageBar Intent="MessageIntent.Success">
+        <FluentLabel Typo="Typography.Body">
+            ?? <strong>Pro Tip:</strong> Combining ColumnSpan and RowSpan allows you to create sophisticated, magazine-style layouts with varied content sizes!
+        </FluentLabel>
+    </FluentMessageBar>
+</div>

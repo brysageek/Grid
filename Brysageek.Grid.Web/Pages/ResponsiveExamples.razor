@@ -1,0 +1,347 @@
+@page "/responsive-examples"
+@using Brysageek.Grid.Placement
+
+<PageTitle>Responsive Examples</PageTitle>
+
+<div style="padding: 20px;">
+    <FluentLabel Typo="Typography.H1">Responsive Grid Layouts</FluentLabel>
+    <FluentLabel Typo="Typography.Body" Style="margin-bottom: 30px;">
+        Create adaptive layouts that respond dynamically to different screen sizes and user interactions.
+    </FluentLabel>
+
+    <FluentDivider Style="margin: 30px 0;" />
+
+    <!-- Example 1: Responsive Column Count -->
+    <FluentLabel Typo="Typography.H2">1. Responsive Column Layout</FluentLabel>
+    <FluentLabel Typo="Typography.Body" Style="margin-bottom: 15px;">
+        Change the number of columns based on container width. Try resizing your browser window!
+    </FluentLabel>
+    
+    <FluentCard Style="margin-bottom: 30px; padding: 20px;">
+        <FluentLabel Typo="Typography.Body" Style="margin-bottom: 10px;">
+            Current Layout: <strong>@currentColumns columns</strong>
+        </FluentLabel>
+        
+        <Grid Columns="@GetColumnTemplate()" Rows="auto auto" Gap="15px">
+            @for (int i = 1; i <= 6; i++)
+            {
+                var itemNumber = i;
+                var colStart = ((itemNumber - 1) % currentColumns + 1).ToString();
+                var rowStart = ((itemNumber - 1) / currentColumns + 1).ToString();
+                <GridItem ColumnStart="@colStart" 
+                          RowStart="@rowStart">
+                    <FluentCard Style="background: #0078D4; height: 120px; display: flex; align-items: center; justify-content: center;">
+                        <FluentLabel Typo="Typography.Body" Style="color: white;">Item @itemNumber</FluentLabel>
+                    </FluentCard>
+                </GridItem>
+            }
+        </Grid>
+        
+        <FluentStack Orientation="Orientation.Horizontal" Style="margin-top: 20px; gap: 10px;">
+            <FluentButton Appearance="@(currentColumns == 2 ? Appearance.Accent : Appearance.Neutral)" 
+                          @onclick="@(() => currentColumns = 2)">2 Columns</FluentButton>
+            <FluentButton Appearance="@(currentColumns == 3 ? Appearance.Accent : Appearance.Neutral)" 
+                          @onclick="@(() => currentColumns = 3)">3 Columns</FluentButton>
+            <FluentButton Appearance="@(currentColumns == 6 ? Appearance.Accent : Appearance.Neutral)" 
+                          @onclick="@(() => currentColumns = 6)">6 Columns</FluentButton>
+        </FluentStack>
+        
+        <FluentAccordion Style="margin-top: 15px;">
+            <FluentAccordionItem Heading="View Code">
+                <pre style="background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto;"><code>@@code {
+    private int currentColumns = 3;
+    
+    private string GetColumnTemplate()
+    {
+        return string.Join(" ", Enumerable.Repeat("1fr", currentColumns));
+    }
+}
+
+&lt;Grid Columns="@@GetColumnTemplate()" Rows="auto auto" Gap="15px"&gt;
+    @@for (int i = 1; i &lt;= 6; i++)
+    {
+        &lt;GridItem ColumnStart="..." RowStart="..."&gt;
+            Item @@i
+        &lt;/GridItem&gt;
+    }
+&lt;/Grid&gt;</code></pre>
+            </FluentAccordionItem>
+        </FluentAccordion>
+    </FluentCard>
+
+    <!-- Example 2: Toggle Layout Mode -->
+    <FluentLabel Typo="Typography.H2">2. Toggle Layout Mode</FluentLabel>
+    <FluentLabel Typo="Typography.Body" Style="margin-bottom: 15px;">
+        Switch between list view and grid view dynamically.
+    </FluentLabel>
+    
+    <FluentCard Style="margin-bottom: 30px; padding: 20px;">
+        <FluentStack Orientation="Orientation.Horizontal" Style="margin-bottom: 15px; gap: 10px;">
+            <FluentButton Appearance="@(isListView ? Appearance.Accent : Appearance.Neutral)" 
+                          Icon="@(new Icons.Regular.Size20.List())"
+                          @onclick="@(() => isListView = true)">List View</FluentButton>
+            <FluentButton Appearance="@(!isListView ? Appearance.Accent : Appearance.Neutral)" 
+                          Icon="@(new Icons.Regular.Size20.Grid())"
+                          @onclick="@(() => isListView = false)">Grid View</FluentButton>
+        </FluentStack>
+        
+        <Grid Columns="@(isListView ? "1fr" : "1fr 1fr 1fr")" 
+              Rows="@(isListView ? "repeat(6, 80px)" : "repeat(2, 150px)")" 
+              Gap="15px">
+            @for (int i = 1; i <= 6; i++)
+            {
+                var itemNumber = i;
+                var colStart = isListView ? "1" : ((itemNumber - 1) % 3 + 1).ToString();
+                var rowStart = isListView ? itemNumber.ToString() : ((itemNumber - 1) / 3 + 1).ToString();
+                <GridItem ColumnStart="@colStart" 
+                          RowStart="@rowStart">
+                    <FluentCard Style="@(isListView ? "padding: 15px; height: 100%; display: flex; align-items: center;" : "background: #50E6FF; height: 100%; padding: 20px;")">
+                        @if (isListView)
+                        {
+                            <FluentStack Orientation="Orientation.Horizontal" Style="width: 100%; align-items: center; gap: 15px;">
+                                <div style="width: 40px; height: 40px; background: #0078D4; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <FluentLabel Typo="Typography.Body" Style="color: white; font-weight: bold;">@itemNumber</FluentLabel>
+                                </div>
+                                <div style="flex-grow: 1;">
+                                    <FluentLabel Typo="Typography.Body" Style="font-weight: bold;">Item @itemNumber</FluentLabel>
+                                    <FluentLabel Typo="Typography.Body" Style="font-size: 12px;">Description for item @itemNumber</FluentLabel>
+                                </div>
+                            </FluentStack>
+                        }
+                        else
+                        {
+                            <FluentLabel Typo="Typography.H5">Item @itemNumber</FluentLabel>
+                            <FluentLabel Typo="Typography.Body" Style="margin-top: 10px; font-size: 14px;">
+                                Grid view content
+                            </FluentLabel>
+                        }
+                    </FluentCard>
+                </GridItem>
+            }
+        </Grid>
+        
+        <FluentAccordion Style="margin-top: 15px;">
+            <FluentAccordionItem Heading="View Code">
+                <pre style="background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto;"><code>@@code {
+    private bool isListView = false;
+}
+
+&lt;Grid Columns="@@(isListView ? "1fr" : "1fr 1fr 1fr")" 
+      Rows="@@(isListView ? "repeat(6, 80px)" : "repeat(2, 150px)")" 
+      Gap="15px"&gt;
+    @@* Items dynamically positioned based on view mode *@@
+&lt;/Grid&gt;</code></pre>
+            </FluentAccordionItem>
+        </FluentAccordion>
+    </FluentCard>
+
+    <!-- Example 3: Adjustable Gap -->
+    <FluentLabel Typo="Typography.H2">3. Dynamic Gap Control</FluentLabel>
+    <FluentLabel Typo="Typography.Body" Style="margin-bottom: 15px;">
+        Adjust the spacing between grid items in real-time.
+    </FluentLabel>
+    
+    <FluentCard Style="margin-bottom: 30px; padding: 20px;">
+        <FluentStack Orientation="Orientation.Horizontal" Style="margin-bottom: 15px; align-items: center; gap: 15px;">
+            <FluentLabel Typo="Typography.Body">Gap: <strong>@gapSize px</strong></FluentLabel>
+            <FluentSlider Min="0" Max="50" Step="5" @bind-Value="gapSize" Style="width: 300px;" />
+        </FluentStack>
+        
+        <Grid Columns="1fr 1fr 1fr 1fr" Rows="100px 100px" Gap="@($"{gapSize}px")">
+            @for (int i = 1; i <= 8; i++)
+            {
+                var itemNumber = i;
+                var colStart = ((itemNumber - 1) % 4 + 1).ToString();
+                var rowStart = ((itemNumber - 1) / 4 + 1).ToString();
+                <GridItem ColumnStart="@colStart" 
+                          RowStart="@rowStart">
+                    <FluentCard Style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 100%; display: flex; align-items: center; justify-content: center;">
+                        <FluentLabel Typo="Typography.Body" Style="color: white;">@itemNumber</FluentLabel>
+                    </FluentCard>
+                </GridItem>
+            }
+        </Grid>
+        
+        <FluentAccordion Style="margin-top: 15px;">
+            <FluentAccordionItem Heading="View Code">
+                <pre style="background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto;"><code>@@code {
+    private int gapSize = 10;
+}
+
+&lt;Grid Columns="1fr 1fr 1fr 1fr" 
+      Rows="100px 100px" 
+      Gap="@@($"{gapSize}px")"&gt;
+    &lt;!-- Grid items --&gt;
+&lt;/Grid&gt;</code></pre>
+            </FluentAccordionItem>
+        </FluentAccordion>
+    </FluentCard>
+
+    <!-- Example 4: Responsive Dashboard -->
+    <FluentLabel Typo="Typography.H2">4. Responsive Dashboard Layout</FluentLabel>
+    <FluentLabel Typo="Typography.Body" Style="margin-bottom: 15px;">
+        A dashboard that adapts its layout based on viewport size simulation.
+    </FluentLabel>
+    
+    <FluentCard Style="margin-bottom: 30px; padding: 20px;">
+        <FluentStack Orientation="Orientation.Horizontal" Style="margin-bottom: 15px; gap: 10px;">
+            <FluentLabel Typo="Typography.Body" Style="align-self: center;">Simulate Device:</FluentLabel>
+            <FluentButton Appearance="@(deviceMode == "mobile" ? Appearance.Accent : Appearance.Neutral)" 
+                          @onclick="@(() => deviceMode = "mobile")">Mobile</FluentButton>
+            <FluentButton Appearance="@(deviceMode == "tablet" ? Appearance.Accent : Appearance.Neutral)" 
+                          @onclick="@(() => deviceMode = "tablet")">Tablet</FluentButton>
+            <FluentButton Appearance="@(deviceMode == "desktop" ? Appearance.Accent : Appearance.Neutral)" 
+                          @onclick="@(() => deviceMode = "desktop")">Desktop</FluentButton>
+        </FluentStack>
+        
+        <div style="@GetDeviceContainerStyle()">
+            @if (deviceMode == "mobile")
+            {
+                <Grid Columns="1fr" Rows="60px 100px 100px 100px 200px" Gap="10px">
+                    <GridItem ColumnStart="1" RowStart="1">
+                        <FluentCard Style="background: #0078D4; height: 100%; display: flex; align-items: center; justify-content: center;">
+                            <FluentLabel Typo="Typography.Body" Style="color: white; font-size: 14px;">Header</FluentLabel>
+                        </FluentCard>
+                    </GridItem>
+                    <GridItem ColumnStart="1" RowStart="2">
+                        <FluentCard Style="padding: 15px;">
+                            <FluentLabel Typo="Typography.Body">Stat 1</FluentLabel>
+                        </FluentCard>
+                    </GridItem>
+                    <GridItem ColumnStart="1" RowStart="3">
+                        <FluentCard Style="padding: 15px;">
+                            <FluentLabel Typo="Typography.Body">Stat 2</FluentLabel>
+                        </FluentCard>
+                    </GridItem>
+                    <GridItem ColumnStart="1" RowStart="4">
+                        <FluentCard Style="padding: 15px;">
+                            <FluentLabel Typo="Typography.Body">Stat 3</FluentLabel>
+                        </FluentCard>
+                    </GridItem>
+                    <GridItem ColumnStart="1" RowStart="5">
+                        <FluentCard Style="padding: 15px;">
+                            <FluentLabel Typo="Typography.Body">Chart</FluentLabel>
+                        </FluentCard>
+                    </GridItem>
+                </Grid>
+            }
+            else if (deviceMode == "tablet")
+            {
+                <Grid Columns="1fr 1fr" Rows="60px 100px 100px 200px" Gap="10px">
+                    <GridItem ColumnStart="1" ColumnSpan="2" RowStart="1">
+                        <FluentCard Style="background: #0078D4; height: 100%; display: flex; align-items: center; justify-content: center;">
+                            <FluentLabel Typo="Typography.Body" Style="color: white;">Header</FluentLabel>
+                        </FluentCard>
+                    </GridItem>
+                    <GridItem ColumnStart="1" RowStart="2">
+                        <FluentCard Style="padding: 15px;">
+                            <FluentLabel Typo="Typography.Body">Stat 1</FluentLabel>
+                        </FluentCard>
+                    </GridItem>
+                    <GridItem ColumnStart="2" RowStart="2">
+                        <FluentCard Style="padding: 15px;">
+                            <FluentLabel Typo="Typography.Body">Stat 2</FluentLabel>
+                        </FluentCard>
+                    </GridItem>
+                    <GridItem ColumnStart="1" ColumnSpan="2" RowStart="3">
+                        <FluentCard Style="padding: 15px;">
+                            <FluentLabel Typo="Typography.Body">Stat 3</FluentLabel>
+                        </FluentCard>
+                    </GridItem>
+                    <GridItem ColumnStart="1" ColumnSpan="2" RowStart="4">
+                        <FluentCard Style="padding: 15px;">
+                            <FluentLabel Typo="Typography.Body">Chart</FluentLabel>
+                        </FluentCard>
+                    </GridItem>
+                </Grid>
+            }
+            else
+            {
+                <Grid Columns="1fr 1fr 1fr" Rows="60px 100px 200px" Gap="15px">
+                    <GridItem ColumnStart="1" ColumnSpan="3" RowStart="1">
+                        <FluentCard Style="background: #0078D4; height: 100%; display: flex; align-items: center; justify-content: center;">
+                            <FluentLabel Typo="Typography.Body" Style="color: white;">Header</FluentLabel>
+                        </FluentCard>
+                    </GridItem>
+                    <GridItem ColumnStart="1" RowStart="2">
+                        <FluentCard Style="padding: 20px;">
+                            <FluentLabel Typo="Typography.Body">Stat 1</FluentLabel>
+                        </FluentCard>
+                    </GridItem>
+                    <GridItem ColumnStart="2" RowStart="2">
+                        <FluentCard Style="padding: 20px;">
+                            <FluentLabel Typo="Typography.Body">Stat 2</FluentLabel>
+                        </FluentCard>
+                    </GridItem>
+                    <GridItem ColumnStart="3" RowStart="2">
+                        <FluentCard Style="padding: 20px;">
+                            <FluentLabel Typo="Typography.Body">Stat 3</FluentLabel>
+                        </FluentCard>
+                    </GridItem>
+                    <GridItem ColumnStart="1" ColumnSpan="3" RowStart="3">
+                        <FluentCard Style="padding: 20px;">
+                            <FluentLabel Typo="Typography.Body">Chart</FluentLabel>
+                        </FluentCard>
+                    </GridItem>
+                </Grid>
+            }
+        </div>
+        
+        <FluentAccordion Style="margin-top: 15px;">
+            <FluentAccordionItem Heading="View Code">
+                <pre style="background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto;"><code>@@code {
+    private string deviceMode = "desktop";
+}
+
+@@if (deviceMode == "mobile")
+{
+    &lt;Grid Columns="1fr" Rows="60px 100px 100px 100px 200px"&gt;
+        &lt;!-- Single column layout --&gt;
+    &lt;/Grid&gt;
+}
+else if (deviceMode == "tablet")
+{
+    &lt;Grid Columns="1fr 1fr" Rows="60px 100px 100px 200px"&gt;
+        &lt;!-- Two column layout --&gt;
+    &lt;/Grid&gt;
+}
+else
+{
+    &lt;Grid Columns="1fr 1fr 1fr" Rows="60px 100px 200px"&gt;
+        &lt;!-- Three column layout --&gt;
+    &lt;/Grid&gt;
+}</code></pre>
+            </FluentAccordionItem>
+        </FluentAccordion>
+    </FluentCard>
+
+    <FluentDivider Style="margin: 30px 0;" />
+
+    <FluentMessageBar Intent="MessageIntent.Info">
+        <FluentLabel Typo="Typography.Body">
+            ?? <strong>Pro Tip:</strong> In production, use CSS media queries or Blazor's <code>@@media</code> queries with JavaScript interop to automatically adjust layouts based on actual screen size!
+        </FluentLabel>
+    </FluentMessageBar>
+</div>
+
+@code {
+    private int currentColumns = 3;
+    private bool isListView = false;
+    private int gapSize = 10;
+    private string deviceMode = "desktop";
+
+    private string GetColumnTemplate()
+    {
+        return string.Join(" ", Enumerable.Repeat("1fr", currentColumns));
+    }
+
+    private string GetDeviceContainerStyle()
+    {
+        return deviceMode switch
+        {
+            "mobile" => "max-width: 375px; margin: 0 auto; border: 2px solid #ccc; padding: 10px; border-radius: 8px;",
+            "tablet" => "max-width: 768px; margin: 0 auto; border: 2px solid #ccc; padding: 15px; border-radius: 8px;",
+            _ => "width: 100%; border: 2px solid #ccc; padding: 20px; border-radius: 8px;"
+        };
+    }
+}
