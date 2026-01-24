@@ -2,10 +2,10 @@
 @inject ThemeService ThemeService
 @implements IDisposable
 
-<FluentLayout>
+<FluentLayout Class="@(ThemeService.IsDarkMode ? "fluent-theme-dark" : "fluent-theme-light")">
     <FluentHeader>
         <FluentStack Orientation="Orientation.Horizontal" HorizontalAlignment="HorizontalAlignment.Left" VerticalAlignment="VerticalAlignment.Center" Width="100%">
-            <FluentLabel Typo="Typography.H3" Style="margin: 0;">Brysageek.Grid</FluentLabel>
+            <FluentLabel Typo="Typography.H3" Style="margin: 0;">Brysgeek Grid</FluentLabel>
             <FluentSpacer />
             <FluentButton Appearance="Appearance.Lightweight" 
                           IconStart="@(ThemeService.IsDarkMode ? new Icons.Regular.Size20.WeatherSunny() : new Icons.Regular.Size20.WeatherMoon())"
@@ -31,9 +31,12 @@
         </FluentBodyContent>
     </FluentStack>
     <FluentFooter>
-        <a href="https://www.fluentui-blazor.net" target="_blank">Documentation and demos</a>
+        <a href="https://www.fluentui-blazor.net" target="_blank">Made with Fluent UI Blazor</a>
         <FluentSpacer />
-        <a href="https://learn.microsoft.com/en-us/aspnet/core/blazor" target="_blank">About Blazor</a>
+        <a href="https://github.com/brysageek/Grid" target="_blank" class="footer-github">
+            <FluentIcon Value="@(new Icons.Regular.Size20.Code())" Color="Color.Accent" />
+            GitHub
+        </a>
     </FluentFooter>
 </FluentLayout>
 

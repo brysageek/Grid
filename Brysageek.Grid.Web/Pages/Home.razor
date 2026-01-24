@@ -63,7 +63,7 @@
 
     <Grid Columns="1fr 1fr" Rows="auto auto auto" Gap="15px">
         <GridItem ColumnStart="1" RowStart="1">
-            <FluentCard Style="height: 100%; cursor: pointer; background: var(--neutral-fill-secondary-rest);" @onclick="@(() => NavigateToExample("/basic-layouts"))">
+            <FluentCard Class="example-card-accent-muted" Style="height: 100%; cursor: pointer;" @onclick="@(() => NavigateToExample("/basic-layouts"))">
                 <FluentLabel Typo="Typography.H4">📊 Basic Layouts</FluentLabel>
                 <FluentLabel Typo="Typography.Body">
                     Learn the fundamentals of creating grid layouts with columns and rows
@@ -71,7 +71,7 @@
             </FluentCard>
         </GridItem>
         <GridItem ColumnStart="2" RowStart="1">
-            <FluentCard Style="height: 100%; cursor: pointer; background: var(--neutral-fill-secondary-rest);" @onclick="@(() => NavigateToExample("/spanning-examples"))">
+            <FluentCard Class="example-card-accent-muted" Style="height: 100%; cursor: pointer;" @onclick="@(() => NavigateToExample("/spanning-examples"))">
                 <FluentLabel Typo="Typography.H4">🔲 Spanning Examples</FluentLabel>
                 <FluentLabel Typo="Typography.Body">
                     See how items can span across multiple columns and rows
@@ -79,7 +79,7 @@
             </FluentCard>
         </GridItem>
         <GridItem ColumnStart="1" RowStart="2">
-            <FluentCard Style="height: 100%; cursor: pointer; background: var(--neutral-fill-secondary-rest);" @onclick="@(() => NavigateToExample("/alignment-examples"))">
+            <FluentCard Class="example-card-neutral" Style="height: 100%; cursor: pointer;" @onclick="@(() => NavigateToExample("/alignment-examples"))">
                 <FluentLabel Typo="Typography.H4">🎯 Alignment Examples</FluentLabel>
                 <FluentLabel Typo="Typography.Body">
                     Control item positioning with JustifySelf and AlignSelf properties
@@ -87,7 +87,7 @@
             </FluentCard>
         </GridItem>
         <GridItem ColumnStart="2" RowStart="2">
-            <FluentCard Style="height: 100%; cursor: pointer; background: var(--neutral-fill-secondary-rest);" @onclick="@(() => NavigateToExample("/responsive-examples"))">
+            <FluentCard Class="example-card-neutral" Style="height: 100%; cursor: pointer;" @onclick="@(() => NavigateToExample("/responsive-examples"))">
                 <FluentLabel Typo="Typography.H4">📱 Responsive Examples</FluentLabel>
                 <FluentLabel Typo="Typography.Body">
                     Build adaptive layouts that respond to different screen sizes
@@ -95,7 +95,7 @@
             </FluentCard>
         </GridItem>
         <GridItem ColumnStart="1" RowStart="3">
-            <FluentCard Style="height: 100%; cursor: pointer; background: var(--neutral-fill-secondary-rest);" @onclick="@(() => NavigateToExample("/interactive-playground"))">
+            <FluentCard Class="example-card-neutral" Style="height: 100%; cursor: pointer;" @onclick="@(() => NavigateToExample("/interactive-playground"))">
                 <FluentLabel Typo="Typography.H4">🎮 Interactive Playground</FluentLabel>
                 <FluentLabel Typo="Typography.Body">
                     Experiment with grid properties in real-time
@@ -103,7 +103,7 @@
             </FluentCard>
         </GridItem>
         <GridItem ColumnStart="2" RowStart="3">
-            <FluentCard Style="height: 100%; cursor: pointer; background: var(--neutral-fill-secondary-rest);" @onclick="@(() => NavigateToExample("/dashboard"))">
+            <FluentCard Class="example-card-neutral" Style="height: 100%; cursor: pointer;" @onclick="@(() => NavigateToExample("/dashboard"))">
                 <FluentLabel Typo="Typography.H4">📈 Dashboard Example</FluentLabel>
                 <FluentLabel Typo="Typography.Body">
                     See a complete dashboard layout built with the Grid component
@@ -112,14 +112,6 @@
         </GridItem>
     </Grid>
 
-    <FluentDivider Style="margin: 30px 0;" />
-
-    <FluentLabel Typo="Typography.H2">Getting Started</FluentLabel>
-    <FluentMessageBar Intent="MessageIntent.Info" Style="margin: 15px 0;">
-        <FluentLabel Typo="Typography.Body">
-            Start with the Basic Layouts example to understand the core concepts, then explore more advanced features in the other examples.
-        </FluentLabel>
-    </FluentMessageBar>
 </div>
 
 @code {

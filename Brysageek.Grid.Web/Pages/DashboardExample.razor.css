@@ -1,8 +1,271 @@
-﻿::deep .card-padding fluent-skeleton:not(:first-child) {
-    margin-top: 10px;
+::deep .card-padding {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
-::deep .card-padding fluent-skeleton:last-child {
-    margin-top: 20px;
-    margin-bottom: 10px;
+::deep .dashboard-card {
+    background: color-mix(in srgb, var(--neutral-fill-secondary-rest) 85%, var(--accent-fill-rest) 15%);
+    border: 1px solid color-mix(in srgb, var(--neutral-stroke-divider-rest) 75%, var(--accent-fill-rest) 25%);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+::deep .dashboard-action-accent::part(control) {
+    background: var(--accent-fill-rest);
+    border-color: var(--accent-fill-rest);
+    color: var(--neutral-foreground-on-accent);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent-fill-rest) 60%, transparent);
+}
+
+::deep .dashboard-action-outline::part(control) {
+    border-color: var(--accent-fill-rest);
+    color: var(--accent-fill-rest);
+}
+
+::deep .dashboard-action-outline::part(control):hover {
+    background: color-mix(in srgb, var(--accent-fill-rest) 18%, transparent);
+}
+
+::deep .dashboard-ops-card {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 32px;
+}
+
+::deep .ops-header-row {
+    width: 100%;
+    justify-content: center;
+    gap: 24px;
+}
+
+::deep .ops-header-text {
+    text-align: center;
+}
+
+::deep .ops-header-text fluent-label:first-child {
+    font-size: 1.5rem;
+}
+
+::deep .ops-header-status {
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--accent-fill-rest) 20%, transparent);
+    border: 1px solid var(--accent-fill-rest);
+}
+
+::deep .dashboard-ops-card .sparkline-card,
+::deep .dashboard-ops-card .mini-panel,
+::deep .dashboard-ops-card .spark-card {
+    padding: 18px;
+    border-color: color-mix(in srgb, var(--accent-fill-rest) 35%, var(--neutral-stroke-divider-rest) 65%);
+}
+
+::deep .dashboard-ops-card .sparkline {
+    height: 80px;
+}
+
+::deep .dashboard-ops-card .progress-track {
+    height: 10px;
+}
+
+::deep .dashboard-ops-card .kpi-chip {
+    font-size: 13px;
+}
+
+::deep .dashboard-ops-card .dashboard-kpi,
+::deep .dashboard-ops-card .dashboard-kpi-small {
+    font-size: 1.1rem;
+}
+
+::deep .dashboard-label {
+    color: var(--neutral-foreground-rest);
+    opacity: 0.8;
+}
+
+::deep .dashboard-muted {
+    color: var(--neutral-foreground-rest);
+    opacity: 0.7;
+}
+
+::deep .dashboard-kpi {
+    font-weight: 600;
+}
+
+::deep .dashboard-kpi-small {
+    font-weight: 600;
+}
+
+::deep .kpi-chip {
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    background: var(--accent-fill-subtle-rest);
+    color: var(--neutral-foreground-rest);
+    border: 1px solid var(--accent-fill-rest);
+}
+
+::deep .kpi-chip-positive {
+    background: color-mix(in srgb, var(--accent-fill-rest) 20%, transparent);
+    color: var(--neutral-foreground-rest);
+    border: 1px solid var(--accent-fill-rest);
+}
+
+::deep .kpi-chip-warning {
+    background: color-mix(in srgb, var(--accent-fill-hover) 25%, transparent);
+    color: var(--neutral-foreground-rest);
+    border: 1px solid var(--accent-fill-hover);
+}
+
+::deep .avatar-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 12px;
+}
+
+::deep .avatar-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-fill-rest);
+    color: var(--neutral-foreground-on-accent);
+    font-weight: 600;
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-fill-rest) 40%, transparent);
+}
+
+::deep .avatar-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+::deep .widget-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+::deep .sparkline-card {
+    flex: 1;
+    background: var(--neutral-fill-rest);
+    border: 1px solid color-mix(in srgb, var(--accent-fill-rest) 30%, var(--neutral-stroke-divider-rest) 70%);
+    border-radius: 14px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+::deep .sparkline {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+    align-items: end;
+    height: 60px;
+}
+
+::deep .sparkline span {
+    display: block;
+    border-radius: 6px 6px 2px 2px;
+    background: linear-gradient(180deg, var(--accent-fill-rest), var(--accent-fill-hover));
+}
+
+::deep .sparkline-warn span {
+    background: linear-gradient(180deg, var(--accent-fill-hover), color-mix(in srgb, var(--accent-fill-rest) 70%, white));
+}
+
+::deep .stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+::deep .stat-values {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+::deep .mini-panel {
+    flex: 1;
+    background: var(--neutral-fill-rest);
+    border: 1px solid color-mix(in srgb, var(--accent-fill-rest) 30%, var(--neutral-stroke-divider-rest) 70%);
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+::deep .status-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+::deep .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-fill-rest);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-fill-rest) 30%, transparent);
+}
+
+::deep .status-dot-positive {
+    background: color-mix(in srgb, var(--accent-fill-rest) 80%, var(--accent-fill-hover) 20%);
+}
+
+::deep .status-dot-warning {
+    background: color-mix(in srgb, var(--accent-fill-hover) 80%, var(--accent-fill-rest) 20%);
+}
+
+::deep .progress-track {
+    width: 100%;
+    height: 8px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--accent-fill-rest) 12%, var(--neutral-fill-strong-rest) 88%);
+    overflow: hidden;
+}
+
+::deep .progress-track span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--accent-fill-rest), var(--accent-fill-hover));
+}
+
+::deep .chip-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+::deep .spark-card {
+    flex: 1;
+    background: var(--neutral-fill-rest);
+    border: 1px solid color-mix(in srgb, var(--accent-fill-rest) 30%, var(--neutral-stroke-divider-rest) 70%);
+    border-radius: 10px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+::deep .spark-bar {
+    width: 100%;
+    height: 6px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--accent-fill-rest) 12%, var(--neutral-fill-strong-rest) 88%);
+    overflow: hidden;
+}
+
+::deep .spark-bar span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--accent-fill-rest), var(--accent-fill-hover));
 }

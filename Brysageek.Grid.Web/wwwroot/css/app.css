@@ -6,6 +6,60 @@ body {
     font-size: var(--type-ramp-base-font-size);
     line-height: var(--type-ramp-base-line-height);
     margin: 0;
+    background: var(--neutral-layer-1);
+    color: var(--neutral-foreground-rest);
+}
+
+/* Bold dark scheme with neon accents */
+:root[data-theme='dark'],
+:root.fluent-theme-dark,
+body[data-theme='dark'],
+body.fluent-theme-dark,
+.fluent-theme-dark {
+    --neutral-layer-1: #0b0f17;
+    --neutral-layer-2: #121827;
+    --neutral-layer-4: #1b2234;
+    --neutral-fill-rest: #111827;
+    --neutral-fill-secondary-rest: #1a2236;
+    --neutral-fill-subtle-rest: #151b2a;
+    --neutral-fill-strong-rest: #2a3350;
+    --neutral-foreground-rest: #e6eaf2;
+    --neutral-foreground-on-accent: #0b0f17;
+    --neutral-stroke-divider-rest: #2c3650;
+    --accent-fill-rest: #ff4fd8;
+    --accent-fill-hover: #ff7ad9;
+    --accent-fill-subtle-rest: rgba(255, 79, 216, 0.2);
+    --accent-stroke-focus-2: #ffe26b;
+    --accent-contrast-orange: #ff8a3d;
+    --accent-contrast-green: #46ff95;
+    --accent-contrast-foreground: #0b0f17;
+    --accent-fill-muted: rgba(255, 79, 216, 0.5);
+}
+
+/* Bold light scheme with neon accents */
+:root[data-theme='light'],
+:root.fluent-theme-light,
+body[data-theme='light'],
+body.fluent-theme-light,
+.fluent-theme-light {
+    --neutral-layer-1: #f7f8fb;
+    --neutral-layer-2: #eff2f7;
+    --neutral-layer-4: #e3e8f2;
+    --neutral-fill-rest: #ffffff;
+    --neutral-fill-secondary-rest: #f1f4f9;
+    --neutral-fill-subtle-rest: #eef2f7;
+    --neutral-fill-strong-rest: #dde3ef;
+    --neutral-foreground-rest: #1b2234;
+    --neutral-foreground-on-accent: #0b0f17;
+    --neutral-stroke-divider-rest: #d3d9e6;
+    --accent-fill-rest: #ff4fd8;
+    --accent-fill-hover: #ff7ad9;
+    --accent-fill-subtle-rest: rgba(255, 79, 216, 0.16);
+    --accent-stroke-focus-2: #ffb3e6;
+    --accent-contrast-orange: #ff8a3d;
+    --accent-contrast-green: #38e27d;
+    --accent-contrast-foreground: #0b0f17;
+    --accent-fill-muted: rgba(255, 79, 216, 0.5);
 }
 
 /* Theme-aware example card backgrounds */
@@ -14,9 +68,67 @@ body {
     color: var(--neutral-foreground-on-accent);
 }
 
+.example-card-accent {
+    background: var(--accent-fill-rest);
+    color: var(--neutral-foreground-on-accent);
+    border: 1px solid var(--accent-stroke-focus-2, var(--accent-fill-rest));
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent-fill-rest) 60%, transparent), 0 8px 18px rgba(0, 0, 0, 0.35);
+}
+
+.example-card-accent-alt {
+    background: var(--accent-fill-hover);
+    color: var(--neutral-foreground-on-accent);
+    border: 1px solid var(--accent-fill-rest);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent-fill-hover) 60%, transparent), 0 8px 18px rgba(0, 0, 0, 0.35);
+}
+
+.example-card-accent-subtle {
+    background: var(--accent-fill-subtle-rest);
+    color: var(--neutral-foreground-rest);
+    border: 1px solid var(--accent-fill-rest);
+}
+
+.example-card-accent-muted {
+    background: var(--accent-fill-muted);
+    color: var(--neutral-foreground-on-accent);
+    border: 1px solid var(--accent-fill-rest);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent-fill-rest) 40%, transparent), 0 8px 18px rgba(0, 0, 0, 0.25);
+}
+
 .example-card-secondary {
     background: var(--neutral-fill-secondary-rest);
     color: var(--neutral-foreground-rest);
+}
+
+.example-card-neutral {
+    background: color-mix(in srgb, var(--neutral-fill-secondary-rest) 85%, var(--accent-fill-rest) 15%);
+    color: var(--neutral-foreground-rest);
+    border: 1px solid color-mix(in srgb, var(--neutral-stroke-divider-rest) 75%, var(--accent-fill-rest) 25%);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+.example-card-neutral-subtle {
+    background: color-mix(in srgb, var(--neutral-fill-subtle-rest) 88%, var(--accent-fill-rest) 12%);
+    color: var(--neutral-foreground-rest);
+    border: 1px solid color-mix(in srgb, var(--neutral-stroke-divider-rest) 80%, var(--accent-fill-rest) 20%);
+}
+
+.example-card-neutral-rest {
+    background: color-mix(in srgb, var(--neutral-fill-rest) 90%, var(--accent-fill-rest) 10%);
+    color: var(--neutral-foreground-rest);
+    border: 1px solid color-mix(in srgb, var(--neutral-stroke-divider-rest) 85%, var(--accent-fill-rest) 15%);
+}
+
+.example-card-neutral-strong {
+    background: color-mix(in srgb, var(--neutral-fill-strong-rest) 82%, var(--accent-fill-rest) 18%);
+    color: var(--neutral-foreground-rest);
+    border: 1px solid color-mix(in srgb, var(--neutral-stroke-divider-rest) 70%, var(--accent-fill-rest) 30%);
+}
+
+.example-card-surface {
+    background: color-mix(in srgb, var(--neutral-layer-1) 92%, var(--accent-fill-rest) 8%);
+    color: var(--neutral-foreground-rest);
+    border: 1px solid color-mix(in srgb, var(--neutral-stroke-divider-rest) 85%, var(--accent-fill-rest) 15%);
 }
 
 .example-card-subtle {
@@ -69,6 +181,12 @@ footer {
     footer a {
         color: var(--neutral-foreground-rest);
         text-decoration: none;
+    }
+
+    footer a.footer-github {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
     }
 
         footer a:focus {

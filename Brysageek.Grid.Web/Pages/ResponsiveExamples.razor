@@ -30,8 +30,8 @@
                 var rowStart = ((itemNumber - 1) / currentColumns + 1).ToString();
                 <GridItem ColumnStart="@colStart" 
                           RowStart="@rowStart">
-                    <FluentCard Style="background: #0078D4; height: 120px; display: flex; align-items: center; justify-content: center;">
-                        <FluentLabel Typo="Typography.Body" Style="color: white;">Item @itemNumber</FluentLabel>
+                    <FluentCard Class="example-card-accent-muted" Style="height: 120px; display: flex; align-items: center; justify-content: center;">
+                        <FluentLabel Typo="Typography.Body">Item @itemNumber</FluentLabel>
                     </FluentCard>
                 </GridItem>
             }
@@ -95,12 +95,13 @@
                 var rowStart = isListView ? itemNumber.ToString() : ((itemNumber - 1) / 3 + 1).ToString();
                 <GridItem ColumnStart="@colStart" 
                           RowStart="@rowStart">
-                    <FluentCard Style="@(isListView ? "padding: 15px; height: 100%; display: flex; align-items: center;" : "background: #50E6FF; height: 100%; padding: 20px;")">
+                    <FluentCard Class="@(isListView ? "example-card-neutral-rest" : "example-card-neutral-subtle")"
+                                Style="@(isListView ? "padding: 15px; height: 100%; display: flex; align-items: center;" : "height: 100%; padding: 20px;")">
                         @if (isListView)
                         {
                             <FluentStack Orientation="Orientation.Horizontal" Style="width: 100%; align-items: center; gap: 15px;">
-                                <div style="width: 40px; height: 40px; background: #0078D4; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                    <FluentLabel Typo="Typography.Body" Style="color: white; font-weight: bold;">@itemNumber</FluentLabel>
+                                <div class="example-card-accent-muted" style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <FluentLabel Typo="Typography.Body" Style="font-weight: bold;">@itemNumber</FluentLabel>
                                 </div>
                                 <div style="flex-grow: 1;">
                                     <FluentLabel Typo="Typography.Body" Style="font-weight: bold;">Item @itemNumber</FluentLabel>
@@ -155,8 +156,8 @@
                 var rowStart = ((itemNumber - 1) / 4 + 1).ToString();
                 <GridItem ColumnStart="@colStart" 
                           RowStart="@rowStart">
-                    <FluentCard Style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 100%; display: flex; align-items: center; justify-content: center;">
-                        <FluentLabel Typo="Typography.Body" Style="color: white;">@itemNumber</FluentLabel>
+                    <FluentCard Class="example-card-accent-muted" Style="height: 100%; display: flex; align-items: center; justify-content: center;">
+                        <FluentLabel Typo="Typography.Body">@itemNumber</FluentLabel>
                     </FluentCard>
                 </GridItem>
             }
@@ -199,8 +200,8 @@
             {
                 <Grid Columns="1fr" Rows="60px 100px 100px 100px 200px" Gap="10px">
                     <GridItem ColumnStart="1" RowStart="1">
-                        <FluentCard Style="background: #0078D4; height: 100%; display: flex; align-items: center; justify-content: center;">
-                            <FluentLabel Typo="Typography.Body" Style="color: white; font-size: 14px;">Header</FluentLabel>
+                        <FluentCard Class="example-card-accent-muted" Style="height: 100%; display: flex; align-items: center; justify-content: center;">
+                            <FluentLabel Typo="Typography.Body" Style="font-size: 14px;">Header</FluentLabel>
                         </FluentCard>
                     </GridItem>
                     <GridItem ColumnStart="1" RowStart="2">
@@ -229,8 +230,8 @@
             {
                 <Grid Columns="1fr 1fr" Rows="60px 100px 100px 200px" Gap="10px">
                     <GridItem ColumnStart="1" ColumnSpan="2" RowStart="1">
-                        <FluentCard Style="background: #0078D4; height: 100%; display: flex; align-items: center; justify-content: center;">
-                            <FluentLabel Typo="Typography.Body" Style="color: white;">Header</FluentLabel>
+                        <FluentCard Class="example-card-accent-muted" Style="height: 100%; display: flex; align-items: center; justify-content: center;">
+                            <FluentLabel Typo="Typography.Body">Header</FluentLabel>
                         </FluentCard>
                     </GridItem>
                     <GridItem ColumnStart="1" RowStart="2">
@@ -259,8 +260,8 @@
             {
                 <Grid Columns="1fr 1fr 1fr" Rows="60px 100px 200px" Gap="15px">
                     <GridItem ColumnStart="1" ColumnSpan="3" RowStart="1">
-                        <FluentCard Style="background: #0078D4; height: 100%; display: flex; align-items: center; justify-content: center;">
-                            <FluentLabel Typo="Typography.Body" Style="color: white;">Header</FluentLabel>
+                        <FluentCard Class="example-card-accent-muted" Style="height: 100%; display: flex; align-items: center; justify-content: center;">
+                            <FluentLabel Typo="Typography.Body">Header</FluentLabel>
                         </FluentCard>
                     </GridItem>
                     <GridItem ColumnStart="1" RowStart="2">
@@ -339,9 +340,9 @@ else
     {
         return deviceMode switch
         {
-            "mobile" => "max-width: 375px; margin: 0 auto; border: 2px solid #ccc; padding: 10px; border-radius: 8px;",
-            "tablet" => "max-width: 768px; margin: 0 auto; border: 2px solid #ccc; padding: 15px; border-radius: 8px;",
-            _ => "width: 100%; border: 2px solid #ccc; padding: 20px; border-radius: 8px;"
+            "mobile" => "max-width: 375px; margin: 0 auto; border: 2px solid var(--neutral-stroke-divider-rest, var(--neutral-fill-strong-rest)); padding: 10px; border-radius: 8px;",
+            "tablet" => "max-width: 768px; margin: 0 auto; border: 2px solid var(--neutral-stroke-divider-rest, var(--neutral-fill-strong-rest)); padding: 15px; border-radius: 8px;",
+            _ => "width: 100%; border: 2px solid var(--neutral-stroke-divider-rest, var(--neutral-fill-strong-rest)); padding: 20px; border-radius: 8px;"
         };
     }
 }

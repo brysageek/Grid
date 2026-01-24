@@ -1,72 +1,254 @@
 @page "/dashboard"
 
 <Grid Columns="1fr 1fr 1fr"
-      Rows="1fr 2fr 6fr 8fr">
+      Rows="auto 2fr 6fr 8fr"
+      Gap="15px">
     <GridItem ColumnStart="1"
               ColumnSpan="3"
               RowStart="1">
-        <FluentLabel Typo="Typography.H2">Dashboard</FluentLabel>
+        <FluentStack Orientation="Orientation.Horizontal" HorizontalAlignment="HorizontalAlignment.SpaceBetween" VerticalAlignment="VerticalAlignment.Center">
+            <div>
+                <FluentLabel Typo="Typography.H2">Dashboard</FluentLabel>
+                <FluentLabel Typo="Typography.Body">Overview of live performance and team activity.</FluentLabel>
+            </div>
+            <FluentStack Orientation="Orientation.Horizontal" Style="gap: 10px;">
+                <FluentButton Appearance="Appearance.Accent" Class="dashboard-action-accent">Create Report</FluentButton>
+                <FluentButton Appearance="Appearance.Outline" Class="dashboard-action-outline">Export</FluentButton>
+            </FluentStack>
+        </FluentStack>
     </GridItem>
     <GridItem ColumnStart="1"
               RowStart="2">
-        <FluentCard Class="card-padding">
-            <FluentSkeleton Shape="SkeletonShape.Circle" Shimmer="true"></FluentSkeleton>
-            <FluentSkeleton Height="10px" Shimmer="true"></FluentSkeleton>
-            <FluentSkeleton Height="10px" Shimmer="true"></FluentSkeleton>
-            <FluentSkeleton Height="10px" Shimmer="true"></FluentSkeleton>
-            <FluentSkeleton Width="75px" Height="30px" Shimmer="true"></FluentSkeleton>
+        <FluentCard Class="card-padding dashboard-card">
+            <FluentLabel Typo="Typography.Body" Class="dashboard-label">Active Users</FluentLabel>
+            <FluentLabel Typo="Typography.H2" Class="dashboard-kpi">24.8K</FluentLabel>
+            <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center" Style="gap: 8px;">
+                <span class="kpi-chip kpi-chip-positive">+12%</span>
+                <FluentLabel Typo="Typography.Body" Class="dashboard-muted">vs last week</FluentLabel>
+            </FluentStack>
         </FluentCard>
     </GridItem>
     <GridItem ColumnStart="2"
               RowStart="2">
-        <FluentCard Class="card-padding">
-            <FluentSkeleton Shape="SkeletonShape.Circle" Shimmer="true"></FluentSkeleton>
-            <FluentSkeleton Height="10px" Shimmer="true"></FluentSkeleton>
-            <FluentSkeleton Height="10px" Shimmer="true"></FluentSkeleton>
-            <FluentSkeleton Height="10px" Shimmer="true"></FluentSkeleton>
-            <FluentSkeleton Width="75px" Height="30px" Shimmer="true"></FluentSkeleton>
+        <FluentCard Class="card-padding dashboard-card">
+            <FluentLabel Typo="Typography.Body" Class="dashboard-label">Revenue</FluentLabel>
+            <FluentLabel Typo="Typography.H2" Class="dashboard-kpi">$1.42M</FluentLabel>
+            <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center" Style="gap: 8px;">
+                <span class="kpi-chip kpi-chip-positive">+6.4%</span>
+                <FluentLabel Typo="Typography.Body" Class="dashboard-muted">monthly goal</FluentLabel>
+            </FluentStack>
         </FluentCard>
     </GridItem>
     <GridItem ColumnStart="3"
               RowStart="2">
-        <FluentCard Class="card-padding">
-            <FluentSkeleton Shape="SkeletonShape.Circle" Shimmer="true"></FluentSkeleton>
-            <FluentSkeleton Height="10px" Shimmer="true"></FluentSkeleton>
-            <FluentSkeleton Height="10px" Shimmer="true"></FluentSkeleton>
-            <FluentSkeleton Height="10px" Shimmer="true"></FluentSkeleton>
-            <FluentSkeleton Width="75px" Height="30px" Shimmer="true"></FluentSkeleton>
+        <FluentCard Class="card-padding dashboard-card">
+            <FluentLabel Typo="Typography.Body" Class="dashboard-label">Retention</FluentLabel>
+            <FluentLabel Typo="Typography.H2" Class="dashboard-kpi">92%</FluentLabel>
+            <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center" Style="gap: 8px;">
+                <span class="kpi-chip kpi-chip-warning">-1.2%</span>
+                <FluentLabel Typo="Typography.Body" Class="dashboard-muted">last 30 days</FluentLabel>
+            </FluentStack>
         </FluentCard>
     </GridItem>
     <GridItem ColumnStart="1"
               RowStart="3">
-        <FluentCard Class="card-padding">
-            <FluentSkeleton Shape="SkeletonShape.Circle" Shimmer="true"></FluentSkeleton>
-            <FluentSkeleton Height="10px" Shimmer="true"></FluentSkeleton>
-            <FluentSkeleton Height="10px" Shimmer="true"></FluentSkeleton>
-            <FluentSkeleton Height="10px" Shimmer="true"></FluentSkeleton>
-            <FluentSkeleton Width="75px" Height="30px" Shimmer="true"></FluentSkeleton>
+        <FluentCard Class="card-padding dashboard-card">
+            <FluentStack Orientation="Orientation.Horizontal" HorizontalAlignment="HorizontalAlignment.SpaceBetween" VerticalAlignment="VerticalAlignment.Center">
+                <div>
+                    <FluentLabel Typo="Typography.H4">Team Activity</FluentLabel>
+                    <FluentLabel Typo="Typography.Body" Class="dashboard-muted">Top contributors today</FluentLabel>
+                </div>
+                <FluentButton Appearance="Appearance.Outline" Class="dashboard-action-outline">View all</FluentButton>
+            </FluentStack>
+            <FluentStack Orientation="Orientation.Vertical" Style="gap: 12px; margin-top: 16px;">
+                <div class="avatar-row">
+                    <div class="avatar-circle">AB</div>
+                    <div class="avatar-info">
+                        <FluentLabel Typo="Typography.Body">Avery Brooks</FluentLabel>
+                        <FluentLabel Typo="Typography.Body" Class="dashboard-muted">12 tasks closed</FluentLabel>
+                    </div>
+                    <FluentLabel Typo="Typography.Body" Class="dashboard-muted">+3.4h</FluentLabel>
+                </div>
+                <div class="avatar-row">
+                    <div class="avatar-circle">KT</div>
+                    <div class="avatar-info">
+                        <FluentLabel Typo="Typography.Body">Kai Torres</FluentLabel>
+                        <FluentLabel Typo="Typography.Body" Class="dashboard-muted">9 reviews shipped</FluentLabel>
+                    </div>
+                    <FluentLabel Typo="Typography.Body" Class="dashboard-muted">+2.1h</FluentLabel>
+                </div>
+                <div class="avatar-row">
+                    <div class="avatar-circle">JM</div>
+                    <div class="avatar-info">
+                        <FluentLabel Typo="Typography.Body">Jules Meyer</FluentLabel>
+                        <FluentLabel Typo="Typography.Body" Class="dashboard-muted">6 experiments</FluentLabel>
+                    </div>
+                    <FluentLabel Typo="Typography.Body" Class="dashboard-muted">+1.6h</FluentLabel>
+                </div>
+            </FluentStack>
         </FluentCard>
     </GridItem>
     <GridItem ColumnStart="2"
               ColumnSpan="2"
               RowStart="3"
               RowSpan="2">
-        <FluentCard Class="card-padding">
-            <FluentSkeleton Shape="SkeletonShape.Circle" Shimmer="true"></FluentSkeleton>
-            <FluentSkeleton Height="10px" Shimmer="true"></FluentSkeleton>
-            <FluentSkeleton Height="10px" Shimmer="true"></FluentSkeleton>
-            <FluentSkeleton Height="10px" Shimmer="true"></FluentSkeleton>
-            <FluentSkeleton Width="75px" Height="30px" Shimmer="true"></FluentSkeleton>
+        <FluentCard Class="card-padding dashboard-card dashboard-ops-card">
+            <FluentStack Orientation="Orientation.Horizontal" HorizontalAlignment="HorizontalAlignment.Center" Class="ops-header-row">
+                <div class="ops-header-text">
+                    <FluentLabel Typo="Typography.H4">Operations Health</FluentLabel>
+                    <FluentLabel Typo="Typography.Body" Class="dashboard-muted">Realtime system status</FluentLabel>
+                </div>
+                <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center" Class="ops-header-status">
+                    <span class="kpi-chip kpi-chip-positive">Stable</span>
+                    <FluentLabel Typo="Typography.Body" Class="dashboard-muted">Last sync 2m</FluentLabel>
+                </FluentStack>
+            </FluentStack>
+            <FluentStack Orientation="Orientation.Horizontal" Style="gap: 20px; margin-top: 18px;">
+                <div class="sparkline-card">
+                    <FluentLabel Typo="Typography.Body" Class="dashboard-muted">Uptime</FluentLabel>
+                    <FluentLabel Typo="Typography.H4">72%</FluentLabel>
+                    <div class="sparkline">
+                        <span style="height: 35%;"></span>
+                        <span style="height: 55%;"></span>
+                        <span style="height: 45%;"></span>
+                        <span style="height: 70%;"></span>
+                        <span style="height: 60%;"></span>
+                        <span style="height: 78%;"></span>
+                        <span style="height: 72%;"></span>
+                    </div>
+                </div>
+                <div class="sparkline-card">
+                    <FluentLabel Typo="Typography.Body" Class="dashboard-muted">Latency</FluentLabel>
+                    <FluentLabel Typo="Typography.H4">87%</FluentLabel>
+                    <div class="sparkline">
+                        <span style="height: 60%;"></span>
+                        <span style="height: 52%;"></span>
+                        <span style="height: 48%;"></span>
+                        <span style="height: 65%;"></span>
+                        <span style="height: 70%;"></span>
+                        <span style="height: 58%;"></span>
+                        <span style="height: 66%;"></span>
+                    </div>
+                </div>
+                <div class="sparkline-card">
+                    <FluentLabel Typo="Typography.Body" Class="dashboard-muted">Capacity</FluentLabel>
+                    <FluentLabel Typo="Typography.H4">63%</FluentLabel>
+                    <div class="sparkline sparkline-warn">
+                        <span style="height: 30%;"></span>
+                        <span style="height: 40%;"></span>
+                        <span style="height: 32%;"></span>
+                        <span style="height: 50%;"></span>
+                        <span style="height: 45%;"></span>
+                        <span style="height: 55%;"></span>
+                        <span style="height: 63%;"></span>
+                    </div>
+                </div>
+            </FluentStack>
+            <FluentDivider Style="margin: 20px 0;" />
+            <FluentStack Orientation="Orientation.Vertical" Style="gap: 10px;">
+                <div class="stat-row">
+                    <FluentLabel Typo="Typography.Body">API Throughput</FluentLabel>
+                    <div class="stat-values">
+                        <FluentLabel Typo="Typography.Body" Class="dashboard-kpi-small">14.2k rpm</FluentLabel>
+                        <span class="kpi-chip kpi-chip-positive">+4%</span>
+                    </div>
+                </div>
+                <div class="stat-row">
+                    <FluentLabel Typo="Typography.Body">Error Budget</FluentLabel>
+                    <div class="stat-values">
+                        <FluentLabel Typo="Typography.Body" Class="dashboard-kpi-small">99.91%</FluentLabel>
+                        <span class="kpi-chip kpi-chip-positive">+0.3%</span>
+                    </div>
+                </div>
+                <div class="stat-row">
+                    <FluentLabel Typo="Typography.Body">Queue Depth</FluentLabel>
+                    <div class="stat-values">
+                        <FluentLabel Typo="Typography.Body" Class="dashboard-kpi-small">48 jobs</FluentLabel>
+                        <span class="kpi-chip kpi-chip-warning">-6%</span>
+                    </div>
+                </div>
+            </FluentStack>
+            <FluentDivider Style="margin: 20px 0;" />
+            <FluentStack Orientation="Orientation.Horizontal" Style="gap: 16px;">
+                <div class="mini-panel">
+                    <FluentLabel Typo="Typography.Body" Class="dashboard-muted">Active Alerts</FluentLabel>
+                    <div class="status-row">
+                        <span class="status-dot status-dot-warning"></span>
+                        <FluentLabel Typo="Typography.Body">Latency spike</FluentLabel>
+                    </div>
+                    <div class="status-row">
+                        <span class="status-dot status-dot-warning"></span>
+                        <FluentLabel Typo="Typography.Body">Queue backlog</FluentLabel>
+                    </div>
+                    <div class="status-row">
+                        <span class="status-dot status-dot-positive"></span>
+                        <FluentLabel Typo="Typography.Body">Search index stable</FluentLabel>
+                    </div>
+                </div>
+                <div class="mini-panel">
+                    <FluentLabel Typo="Typography.Body" Class="dashboard-muted">Regional Status</FluentLabel>
+                    <div class="status-row">
+                        <span class="status-dot status-dot-positive"></span>
+                        <FluentLabel Typo="Typography.Body">US-East</FluentLabel>
+                        <span class="kpi-chip kpi-chip-positive">99.98%</span>
+                    </div>
+                    <div class="status-row">
+                        <span class="status-dot status-dot-positive"></span>
+                        <FluentLabel Typo="Typography.Body">EU-West</FluentLabel>
+                        <span class="kpi-chip kpi-chip-positive">99.95%</span>
+                    </div>
+                    <div class="status-row">
+                        <span class="status-dot status-dot-warning"></span>
+                        <FluentLabel Typo="Typography.Body">APAC</FluentLabel>
+                        <span class="kpi-chip kpi-chip-warning">99.2%</span>
+                    </div>
+                </div>
+            </FluentStack>
+            <FluentDivider Style="margin: 20px 0;" />
+            <FluentStack Orientation="Orientation.Horizontal" Style="gap: 16px;">
+                <div class="mini-panel">
+                    <FluentLabel Typo="Typography.Body" Class="dashboard-muted">Deployments</FluentLabel>
+                    <FluentLabel Typo="Typography.H4">18</FluentLabel>
+                    <FluentLabel Typo="Typography.Body" Class="dashboard-muted">Last 24 hours</FluentLabel>
+                    <div class="progress-track">
+                        <span style="width: 72%;"></span>
+                    </div>
+                    <FluentLabel Typo="Typography.Body" Class="dashboard-muted">72% of weekly target</FluentLabel>
+                </div>
+                <div class="mini-panel">
+                    <FluentLabel Typo="Typography.Body" Class="dashboard-muted">Incident Response</FluentLabel>
+                    <FluentLabel Typo="Typography.H4">14m</FluentLabel>
+                    <FluentLabel Typo="Typography.Body" Class="dashboard-muted">Median time to resolve</FluentLabel>
+                    <div class="chip-stack">
+                        <span class="kpi-chip kpi-chip-positive">P1: 2</span>
+                        <span class="kpi-chip">P2: 4</span>
+                        <span class="kpi-chip kpi-chip-warning">P3: 7</span>
+                    </div>
+                </div>
+            </FluentStack>
         </FluentCard>
     </GridItem>
     <GridItem ColumnStart="1"
               RowStart="4">
-        <FluentCard Class="card-padding">
-            <FluentSkeleton Shape="SkeletonShape.Circle" Shimmer="true"></FluentSkeleton>
-            <FluentSkeleton Height="10px" Shimmer="true"></FluentSkeleton>
-            <FluentSkeleton Height="10px" Shimmer="true"></FluentSkeleton>
-            <FluentSkeleton Height="10px" Shimmer="true"></FluentSkeleton>
-            <FluentSkeleton Width="75px" Height="30px" Shimmer="true"></FluentSkeleton>
+        <FluentCard Class="card-padding dashboard-card">
+            <FluentLabel Typo="Typography.H4">Pipeline Score</FluentLabel>
+            <FluentLabel Typo="Typography.Body" Class="dashboard-muted">Weighted completion rate</FluentLabel>
+            <FluentStack Orientation="Orientation.Horizontal" Style="gap: 12px; margin-top: 16px;">
+                <div class="spark-card">
+                    <FluentLabel Typo="Typography.Body" Class="dashboard-muted">Design</FluentLabel>
+                    <FluentLabel Typo="Typography.H4">81%</FluentLabel>
+                    <div class="spark-bar">
+                        <span style="width: 81%;"></span>
+                    </div>
+                </div>
+                <div class="spark-card">
+                    <FluentLabel Typo="Typography.Body" Class="dashboard-muted">Build</FluentLabel>
+                    <FluentLabel Typo="Typography.H4">74%</FluentLabel>
+                    <div class="spark-bar">
+                        <span style="width: 74%;"></span>
+                    </div>
+                </div>
+            </FluentStack>
         </FluentCard>
     </GridItem>
 </Grid>

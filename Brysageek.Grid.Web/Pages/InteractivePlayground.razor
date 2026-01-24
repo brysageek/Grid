@@ -137,7 +137,7 @@
             <FluentCard Style="padding: 20px;">
                 <FluentLabel Typo="Typography.H4" Style="margin-bottom: 20px;">Live Preview</FluentLabel>
                 
-                <div style="border: 2px dashed #ccc; padding: 20px; border-radius: 8px; background: var(--neutral-layer-1); min-height: 400px;">
+                <div style="border: 2px dashed var(--neutral-stroke-divider-rest, var(--neutral-fill-strong-rest)); padding: 20px; border-radius: 8px; background: var(--neutral-layer-1); min-height: 400px;">
                     <Grid Columns="@columnsValue" 
                           Rows="@rowsValue" 
                           Width="@widthValue" 
@@ -153,13 +153,13 @@
                                       RowSpan="@item.RowSpan.ToString()"
                                       JustifySelf="@item.JustifySelf"
                                       AlignSelf="@item.AlignSelf">
-                                <FluentCard Style="@GetItemStyle(isSelected)" @onclick="@(() => SelectItem(itemNumber))">
+                                <FluentCard Class="example-card-accent-muted" Style="@GetItemStyle(isSelected)" @onclick="@(() => SelectItem(itemNumber))">
                                     <FluentStack Orientation="Orientation.Vertical" Style="align-items: center; gap: 5px;">
-                                        <FluentLabel Typo="Typography.Body" Style="color: white; font-weight: bold;">Item @itemNumber</FluentLabel>
-                                        <FluentLabel Typo="Typography.Body" Style="color: white; font-size: 11px;">
+                                        <FluentLabel Typo="Typography.Body" Style="font-weight: bold;">Item @itemNumber</FluentLabel>
+                                        <FluentLabel Typo="Typography.Body" Style="font-size: 11px;">
                                             Col: @item.ColumnStart+@item.ColumnSpan
                                         </FluentLabel>
-                                        <FluentLabel Typo="Typography.Body" Style="color: white; font-size: 11px;">
+                                        <FluentLabel Typo="Typography.Body" Style="font-size: 11px;">
                                             Row: @item.RowStart+@item.RowSpan
                                         </FluentLabel>
                                     </FluentStack>
@@ -267,9 +267,8 @@
 
     private string GetItemStyle(bool isSelected)
     {
-        var backgroundColor = isSelected ? "#0078D4" : "#667eea";
-        var border = isSelected ? "3px solid #FFD700" : "none";
-        return $"background: {backgroundColor}; height: 100%; min-height: 80px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: {border}; transition: all 0.2s;";
+        var border = isSelected ? "3px solid var(--accent-stroke-focus-2, var(--accent-fill-rest))" : "none";
+        return $"height: 100%; min-height: 80px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: {border}; transition: all 0.2s;";
     }
 
     private string GenerateCode()
