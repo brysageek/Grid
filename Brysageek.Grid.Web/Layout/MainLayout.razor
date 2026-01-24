@@ -1,0 +1,58 @@
+﻿@inherits LayoutComponentBase
+@inject ThemeService ThemeService
+@implements IDisposable
+
+<FluentLayout Class="@(ThemeService.IsDarkMode ? "fluent-theme-dark" : "fluent-theme-light")">
+    <FluentHeader>
+        <FluentStack Orientation="Orientation.Horizontal" HorizontalAlignment="HorizontalAlignment.Left" VerticalAlignment="VerticalAlignment.Center" Width="100%">
+            <FluentLabel Typo="Typography.H3" Style="margin: 0;">Brysgeek Grid</FluentLabel>
+            <FluentSpacer />
+            <FluentButton Appearance="Appearance.Lightweight" 
+                          IconStart="@(ThemeService.IsDarkMode ? new Icons.Regular.Size20.WeatherSunny() : new Icons.Regular.Size20.WeatherMoon())"
+                          OnClick="@ToggleTheme"
+                          Title="@(ThemeService.IsDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode")">
+                @(ThemeService.IsDarkMode ? "Light" : "Dark")
+            </FluentButton>
+        </FluentStack>
+    </FluentHeader>
+    <FluentStack Class="main" Orientation="Orientation.Horizontal" Width="100%">
+        <NavMenu />
+        <FluentBodyContent Class="body-content">
+            <ErrorBoundary>
+                <ChildContent>
+                    <div class="content">
+                        @Body
+                    </div>
+                </ChildContent>
+                <ErrorContent Context="ex">
+                    <div class="blazor-error-boundary">@ex.Message</div>
+                </ErrorContent>
+            </ErrorBoundary>
+        </FluentBodyContent>
+    </FluentStack>
+    <FluentFooter>
+        <a href="https://www.fluentui-blazor.net" target="_blank">Made with Fluent UI Blazor</a>
+        <FluentSpacer />
+        <a href="https://github.com/brysageek/Grid" target="_blank" class="footer-github">
+            <FluentIcon Value="@(new Icons.Regular.Size20.Code())" Color="Color.Accent" />
+            GitHub
+        </a>
+    </FluentFooter>
+</FluentLayout>
+
+@code {
+    protected override void OnInitialized()
+    {
+        ThemeService.OnThemeChanged += StateHasChanged;
+    }
+
+    private void ToggleTheme()
+    {
+        ThemeService.ToggleTheme();
+    }
+
+    public void Dispose()
+    {
+        ThemeService.OnThemeChanged -= StateHasChanged;
+    }
+}

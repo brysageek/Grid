@@ -1,0 +1,319 @@
+@page "/interactive-playground"
+@using Brysageek.Grid.Placement
+
+<PageTitle>Interactive Playground</PageTitle>
+
+<div style="padding: 20px;">
+    <FluentLabel Typo="Typography.H1">Interactive Grid Playground</FluentLabel>
+    <FluentLabel Typo="Typography.Body" Style="margin-bottom: 30px;">
+        Experiment with grid properties in real-time and see the results immediately!
+    </FluentLabel>
+
+    <FluentDivider Style="margin: 30px 0;" />
+
+    <Grid Columns="300px 1fr" Rows="1fr" Gap="30px">
+        <!-- Controls Panel -->
+        <GridItem ColumnStart="1" RowStart="1">
+            <FluentCard Style="padding: 20px; height: fit-content; position: sticky; top: 20px;">
+                <FluentLabel Typo="Typography.H4" Style="margin-bottom: 20px;">Grid Controls</FluentLabel>
+                
+                <!-- Grid Properties -->
+                <FluentStack Orientation="Orientation.Vertical" Style="gap: 20px;">
+                    <div>
+                        <FluentLabel Typo="Typography.Body" Style="font-weight: bold; margin-bottom: 8px;">Columns</FluentLabel>
+                        <FluentTextField @bind-Value="columnsValue" Style="width: 100%;" Placeholder="e.g., 1fr 1fr 1fr" />
+                        <FluentLabel Typo="Typography.Body" Style="font-size: 12px; color: var(--neutral-foreground-hint); margin-top: 4px;">
+                            Define column widths (e.g., "1fr 2fr 1fr", "100px 1fr")
+                        </FluentLabel>
+                    </div>
+
+                    <div>
+                        <FluentLabel Typo="Typography.Body" Style="font-weight: bold; margin-bottom: 8px;">Rows</FluentLabel>
+                        <FluentTextField @bind-Value="rowsValue" Style="width: 100%;" Placeholder="e.g., 100px 100px" />
+                        <FluentLabel Typo="Typography.Body" Style="font-size: 12px; color: var(--neutral-foreground-hint); margin-top: 4px;">
+                            Define row heights (e.g., "auto 1fr", "100px 200px")
+                        </FluentLabel>
+                    </div>
+
+                    <div>
+                        <FluentLabel Typo="Typography.Body" Style="font-weight: bold; margin-bottom: 8px;">Gap: @gapValue px</FluentLabel>
+                        <FluentSlider Min="0" Max="50" Step="5" @bind-Value="gapValue" Style="width: 100%;" />
+                    </div>
+
+                    <div>
+                        <FluentLabel Typo="Typography.Body" Style="font-weight: bold; margin-bottom: 8px;">Width</FluentLabel>
+                        <FluentTextField @bind-Value="widthValue" Style="width: 100%;" Placeholder="e.g., 100%, 600px" />
+                    </div>
+
+                    <div>
+                        <FluentLabel Typo="Typography.Body" Style="font-weight: bold; margin-bottom: 8px;">Height</FluentLabel>
+                        <FluentTextField @bind-Value="heightValue" Style="width: 100%;" Placeholder="e.g., 400px, auto" />
+                    </div>
+
+                    <FluentDivider />
+
+                    <FluentLabel Typo="Typography.H5">Selected Item: @selectedItem</FluentLabel>
+
+                    @if (selectedItem > 0)
+                    {
+                        <div>
+                            <FluentLabel Typo="Typography.Body" Style="font-weight: bold; margin-bottom: 8px;">Column Start</FluentLabel>
+                            <FluentNumberField @bind-Value="GetSelectedItemConfig().ColumnStart" Min="1" Max="10" Style="width: 100%;" />
+                        </div>
+
+                        <div>
+                            <FluentLabel Typo="Typography.Body" Style="font-weight: bold; margin-bottom: 8px;">Column Span</FluentLabel>
+                            <FluentNumberField @bind-Value="GetSelectedItemConfig().ColumnSpan" Min="1" Max="10" Style="width: 100%;" />
+                        </div>
+
+                        <div>
+                            <FluentLabel Typo="Typography.Body" Style="font-weight: bold; margin-bottom: 8px;">Row Start</FluentLabel>
+                            <FluentNumberField @bind-Value="GetSelectedItemConfig().RowStart" Min="1" Max="10" Style="width: 100%;" />
+                        </div>
+
+                        <div>
+                            <FluentLabel Typo="Typography.Body" Style="font-weight: bold; margin-bottom: 8px;">Row Span</FluentLabel>
+                            <FluentNumberField @bind-Value="GetSelectedItemConfig().RowSpan" Min="1" Max="10" Style="width: 100%;" />
+                        </div>
+
+                        <div>
+                            <FluentLabel Typo="Typography.Body" Style="font-weight: bold; margin-bottom: 8px;">JustifySelf</FluentLabel>
+                            <FluentStack Orientation="Orientation.Horizontal" Style="gap: 5px; flex-wrap: wrap;">
+                                <FluentButton Appearance="@(GetSelectedItemConfig().JustifySelf == JustifySelf.Auto ? Appearance.Accent : Appearance.Neutral)" 
+                                              @onclick="@(() => GetSelectedItemConfig().JustifySelf = JustifySelf.Auto)">Auto</FluentButton>
+                                <FluentButton Appearance="@(GetSelectedItemConfig().JustifySelf == JustifySelf.Start ? Appearance.Accent : Appearance.Neutral)" 
+                                              @onclick="@(() => GetSelectedItemConfig().JustifySelf = JustifySelf.Start)">Start</FluentButton>
+                                <FluentButton Appearance="@(GetSelectedItemConfig().JustifySelf == JustifySelf.End ? Appearance.Accent : Appearance.Neutral)" 
+                                              @onclick="@(() => GetSelectedItemConfig().JustifySelf = JustifySelf.End)">End</FluentButton>
+                                <FluentButton Appearance="@(GetSelectedItemConfig().JustifySelf == JustifySelf.Center ? Appearance.Accent : Appearance.Neutral)" 
+                                              @onclick="@(() => GetSelectedItemConfig().JustifySelf = JustifySelf.Center)">Center</FluentButton>
+                                <FluentButton Appearance="@(GetSelectedItemConfig().JustifySelf == JustifySelf.Stretch ? Appearance.Accent : Appearance.Neutral)" 
+                                              @onclick="@(() => GetSelectedItemConfig().JustifySelf = JustifySelf.Stretch)">Stretch</FluentButton>
+                            </FluentStack>
+                        </div>
+
+                        <div>
+                            <FluentLabel Typo="Typography.Body" Style="font-weight: bold; margin-bottom: 8px;">AlignSelf</FluentLabel>
+                            <FluentStack Orientation="Orientation.Horizontal" Style="gap: 5px; flex-wrap: wrap;">
+                                <FluentButton Appearance="@(GetSelectedItemConfig().AlignSelf == AlignSelf.Auto ? Appearance.Accent : Appearance.Neutral)" 
+                                              @onclick="@(() => GetSelectedItemConfig().AlignSelf = AlignSelf.Auto)">Auto</FluentButton>
+                                <FluentButton Appearance="@(GetSelectedItemConfig().AlignSelf == AlignSelf.Start ? Appearance.Accent : Appearance.Neutral)" 
+                                              @onclick="@(() => GetSelectedItemConfig().AlignSelf = AlignSelf.Start)">Start</FluentButton>
+                                <FluentButton Appearance="@(GetSelectedItemConfig().AlignSelf == AlignSelf.End ? Appearance.Accent : Appearance.Neutral)" 
+                                              @onclick="@(() => GetSelectedItemConfig().AlignSelf = AlignSelf.End)">End</FluentButton>
+                                <FluentButton Appearance="@(GetSelectedItemConfig().AlignSelf == AlignSelf.Center ? Appearance.Accent : Appearance.Neutral)" 
+                                              @onclick="@(() => GetSelectedItemConfig().AlignSelf = AlignSelf.Center)">Center</FluentButton>
+                                <FluentButton Appearance="@(GetSelectedItemConfig().AlignSelf == AlignSelf.Stretch ? Appearance.Accent : Appearance.Neutral)" 
+                                              @onclick="@(() => GetSelectedItemConfig().AlignSelf = AlignSelf.Stretch)">Stretch</FluentButton>
+                            </FluentStack>
+                        </div>
+                    }
+                    else
+                    {
+                        <FluentMessageBar Intent="MessageIntent.Info">
+                            <FluentLabel Typo="Typography.Body" Style="font-size: 12px;">
+                                Click on a grid item to edit its properties
+                            </FluentLabel>
+                        </FluentMessageBar>
+                    }
+
+                    <FluentDivider />
+
+                    <FluentStack Orientation="Orientation.Horizontal" Style="gap: 10px;">
+                        <FluentButton Appearance="Appearance.Accent" @onclick="AddItem" Style="flex: 1;">Add Item</FluentButton>
+                        @if (selectedItem > 0)
+                        {
+                            <FluentButton Appearance="Appearance.Neutral" @onclick="RemoveSelectedItem" Style="flex: 1;">Remove</FluentButton>
+                        }
+                    </FluentStack>
+
+                    <FluentButton Appearance="Appearance.Outline" @onclick="ResetToDefault" Style="width: 100%;">Reset to Default</FluentButton>
+                </FluentStack>
+            </FluentCard>
+        </GridItem>
+
+        <!-- Preview Panel -->
+        <GridItem ColumnStart="2" RowStart="1">
+            <FluentCard Style="padding: 20px;">
+                <FluentLabel Typo="Typography.H4" Style="margin-bottom: 20px;">Live Preview</FluentLabel>
+                
+                <div style="border: 2px dashed var(--neutral-stroke-divider-rest, var(--neutral-fill-strong-rest)); padding: 20px; border-radius: 8px; background: var(--neutral-layer-1); min-height: 400px;">
+                    <Grid Columns="@columnsValue" 
+                          Rows="@rowsValue" 
+                          Width="@widthValue" 
+                          Height="@heightValue" 
+                          Gap="@($"{gapValue}px")">
+                        @foreach (var item in gridItems)
+                        {
+                            var itemNumber = item.Id;
+                            var isSelected = selectedItem == itemNumber;
+                            <GridItem ColumnStart="@item.ColumnStart.ToString()" 
+                                      ColumnSpan="@item.ColumnSpan.ToString()"
+                                      RowStart="@item.RowStart.ToString()" 
+                                      RowSpan="@item.RowSpan.ToString()"
+                                      JustifySelf="@item.JustifySelf"
+                                      AlignSelf="@item.AlignSelf">
+                                <FluentCard Class="example-card-accent-muted" Style="@GetItemStyle(isSelected)" @onclick="@(() => SelectItem(itemNumber))">
+                                    <FluentStack Orientation="Orientation.Vertical" Style="align-items: center; gap: 5px;">
+                                        <FluentLabel Typo="Typography.Body" Style="font-weight: bold;">Item @itemNumber</FluentLabel>
+                                        <FluentLabel Typo="Typography.Body" Style="font-size: 11px;">
+                                            Col: @item.ColumnStart+@item.ColumnSpan
+                                        </FluentLabel>
+                                        <FluentLabel Typo="Typography.Body" Style="font-size: 11px;">
+                                            Row: @item.RowStart+@item.RowSpan
+                                        </FluentLabel>
+                                    </FluentStack>
+                                </FluentCard>
+                            </GridItem>
+                        }
+                    </Grid>
+                </div>
+
+                <!-- Generated Code -->
+                <FluentDivider Style="margin: 30px 0;" />
+                
+                <FluentLabel Typo="Typography.H5" Style="margin-bottom: 15px;">Generated Code</FluentLabel>
+                <FluentAccordion>
+                    <FluentAccordionItem Heading="View Generated Code" Expanded="false">
+                        <pre style="background: var(--neutral-layer-2); padding: 15px; border-radius: 4px; overflow-x: auto; font-size: 12px;"><code>@GenerateCode()</code></pre>
+                        <FluentButton Appearance="Appearance.Accent" @onclick="CopyCodeToClipboard" Style="margin-top: 10px;">
+                            Copy to Clipboard
+                        </FluentButton>
+                    </FluentAccordionItem>
+                </FluentAccordion>
+            </FluentCard>
+        </GridItem>
+    </Grid>
+</div>
+
+@code {
+    private string columnsValue = "1fr 1fr 1fr";
+    private string rowsValue = "150px 150px";
+    private int gapValue = 10;
+    private string widthValue = "100%";
+    private string heightValue = "auto";
+    private int selectedItem = 0;
+    private int nextItemId = 5;
+
+    private List<GridItemConfig> gridItems = new()
+    {
+        new() { Id = 1, ColumnStart = 1, ColumnSpan = 1, RowStart = 1, RowSpan = 1, JustifySelf = JustifySelf.Stretch, AlignSelf = AlignSelf.Stretch },
+        new() { Id = 2, ColumnStart = 2, ColumnSpan = 1, RowStart = 1, RowSpan = 1, JustifySelf = JustifySelf.Stretch, AlignSelf = AlignSelf.Stretch },
+        new() { Id = 3, ColumnStart = 3, ColumnSpan = 1, RowStart = 1, RowSpan = 1, JustifySelf = JustifySelf.Stretch, AlignSelf = AlignSelf.Stretch },
+        new() { Id = 4, ColumnStart = 1, ColumnSpan = 3, RowStart = 2, RowSpan = 1, JustifySelf = JustifySelf.Stretch, AlignSelf = AlignSelf.Stretch }
+    };
+
+    private class GridItemConfig
+    {
+        public int Id { get; set; }
+        public int ColumnStart { get; set; }
+        public int ColumnSpan { get; set; }
+        public int RowStart { get; set; }
+        public int RowSpan { get; set; }
+        public JustifySelf JustifySelf { get; set; }
+        public AlignSelf AlignSelf { get; set; }
+    }
+
+    private GridItemConfig GetSelectedItemConfig()
+    {
+        return gridItems.FirstOrDefault(i => i.Id == selectedItem) ?? gridItems.First();
+    }
+
+    private void SelectItem(int itemId)
+    {
+        selectedItem = itemId;
+    }
+
+    private void AddItem()
+    {
+        gridItems.Add(new GridItemConfig
+        {
+            Id = nextItemId++,
+            ColumnStart = 1,
+            ColumnSpan = 1,
+            RowStart = 1,
+            RowSpan = 1,
+            JustifySelf = JustifySelf.Stretch,
+            AlignSelf = AlignSelf.Stretch
+        });
+    }
+
+    private void RemoveSelectedItem()
+    {
+        if (selectedItem > 0)
+        {
+            gridItems.RemoveAll(i => i.Id == selectedItem);
+            selectedItem = 0;
+        }
+    }
+
+    private void ResetToDefault()
+    {
+        columnsValue = "1fr 1fr 1fr";
+        rowsValue = "150px 150px";
+        gapValue = 10;
+        widthValue = "100%";
+        heightValue = "auto";
+        selectedItem = 0;
+        nextItemId = 5;
+        gridItems = new()
+        {
+            new() { Id = 1, ColumnStart = 1, ColumnSpan = 1, RowStart = 1, RowSpan = 1, JustifySelf = JustifySelf.Stretch, AlignSelf = AlignSelf.Stretch },
+            new() { Id = 2, ColumnStart = 2, ColumnSpan = 1, RowStart = 1, RowSpan = 1, JustifySelf = JustifySelf.Stretch, AlignSelf = AlignSelf.Stretch },
+            new() { Id = 3, ColumnStart = 3, ColumnSpan = 1, RowStart = 1, RowSpan = 1, JustifySelf = JustifySelf.Stretch, AlignSelf = AlignSelf.Stretch },
+            new() { Id = 4, ColumnStart = 1, ColumnSpan = 3, RowStart = 2, RowSpan = 1, JustifySelf = JustifySelf.Stretch, AlignSelf = AlignSelf.Stretch }
+        };
+    }
+
+    private string GetItemStyle(bool isSelected)
+    {
+        var border = isSelected ? "3px solid var(--accent-stroke-focus-2, var(--accent-fill-rest))" : "none";
+        return $"height: 100%; min-height: 80px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: {border}; transition: all 0.2s;";
+    }
+
+    private string GenerateCode()
+    {
+        var code = $@"<Grid Columns=""{columnsValue}"" 
+      Rows=""{rowsValue}"" 
+      Width=""{widthValue}"" 
+      Height=""{heightValue}"" 
+      Gap=""{gapValue}px"">";
+
+        foreach (var item in gridItems)
+        {
+            code += $@"
+    <GridItem ColumnStart=""{item.ColumnStart}"" 
+              ColumnSpan=""{item.ColumnSpan}""
+              RowStart=""{item.RowStart}"" 
+              RowSpan=""{item.RowSpan}""";
+            
+            if (item.JustifySelf != JustifySelf.Auto)
+            {
+                code += $@"
+              JustifySelf=""JustifySelf.{item.JustifySelf}""";
+            }
+            
+            if (item.AlignSelf != AlignSelf.Auto)
+            {
+                code += $@"
+              AlignSelf=""AlignSelf.{item.AlignSelf}""";
+            }
+            
+            code += $@">
+        <YourContent />
+    </GridItem>";
+        }
+
+        code += @"
+</Grid>";
+
+        return code;
+    }
+
+    private async Task CopyCodeToClipboard()
+    {
+        // In a real implementation, you would use JS interop to copy to clipboard
+        // For now, this is a placeholder
+        await Task.CompletedTask;
+    }
+}
